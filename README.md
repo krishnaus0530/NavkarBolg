@@ -1,59 +1,78 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+  <a href="https://krishnaus0530.github.io/NavkarBolg/" target="_blank">
+    <img src="https://raw.githubusercontent.com/krishnaus0530/NavkarBolg/main/assets/logo.png" width="300" alt="NavkarBolg Logo">
+  </a>
 </p>
 
-## About Laravel
+<p align="center">
+  <a href="https://github.com/krishnaus0530/NavkarBolg/stargazers"><img src="https://img.shields.io/github/stars/krishnaus0530/NavkarBolg?style=social" alt="GitHub Stars"></a>
+  <a href="https://github.com/krishnaus0530/NavkarBolg/network/members"><img src="https://img.shields.io/github/forks/krishnaus0530/NavkarBolg?style=social" alt="GitHub Forks"></a>
+  <a href="https://github.com/krishnaus0530/NavkarBolg/issues"><img src="https://img.shields.io/github/issues/krishnaus0530/NavkarBolg" alt="Issues"></a>
+  <a href="https://github.com/krishnaus0530/NavkarBolg"><img src="https://img.shields.io/github/repo-size/krishnaus0530/NavkarBolg" alt="Repo Size"></a>
+</p>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+# NavkarBolg – Dynamic Blog Portal by Krishna Navkar
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+**NavkarBolg** is a **dynamic blog portal** developed by **Krishna Navkar**. It features **real-time blog statistics**, **dynamic listings**, and **interactive user features**, making it a modern platform for blogging enthusiasts.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+**Live Demo:** [https://krishnaus0530.github.io/NavkarBolg/](https://krishnaus0530.github.io/NavkarBolg/)
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+## Features of NavkarBolg
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- **Dynamic Blog Listings** – Display blogs dynamically with categories and latest posts.
+- **Real-time Statistics** – Track views, likes, and engagement for each blog post.
+- **Responsive UI** – Works perfectly on mobile, tablet, and desktop devices.
+- **Search & Category Filters** – Easily find blogs using search or filter by category.
+- **Modern Tech Stack** – Built using **Laravel**, **MySQL**, **HTML**, **CSS**, and **JavaScript**.
 
-## Laravel Sponsors
+---
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## Tech Stack
 
-### Premium Partners
+- **Backend:** Laravel PHP Framework
+- **Database:** MySQL
+- **Frontend:** HTML, CSS, JavaScript
+- **Version Control:** GitHub
+- **Hosting:** GitHub Pages (Live Demo)
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+---
+
+## About Project
+
+NavkarBolg is a fully functional blogging platform designed to demonstrate a **dynamic content system with real-time analytics**. Users can browse blogs, view **interactive stats**, and enjoy a **modern responsive interface**.  
+
+This project also serves as a learning example for **Laravel developers**, database management, and modern web application best practices.
+
+---
+
+## Why NavkarBolg?
+
+- Built to demonstrate **real-time data handling** in web applications.  
+- Ideal for **learning Laravel and dynamic web development**.  
+- Shows practical usage of **responsive design, search, and category filters**.  
+
+---
+
+## Keywords
+
+Navkar Blog, Krishna Navkar, Dynamic Blog Portal, Real-time Blog Stats, Laravel Blog Portal, Responsive Blog Website, Blogging Platform
+
+---
 
 ## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Contributions are welcome! If you want to enhance NavkarBolg, feel free to fork the repo, make changes, and create a pull request.  
 
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+---
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+NavkarBolg is open-source and licensed under the **MIT License**.
+
+---
+
+<p align="center">
+  Made with ❤️ by Krishna Navkar
+</p>
