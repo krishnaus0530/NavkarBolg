@@ -11,7 +11,7 @@
   <a href="https://github.com/krishnaus0530/NavkarBolg"><img src="https://img.shields.io/github/repo-size/krishnaus0530/NavkarBolg" alt="Repo Size"></a>
 </p>
 
-# NavkarBolg – Dynamic Blog Portal by Krishna Navkar
+# NavkarBolg – Dynamic Navkaar_Krishna+_Blog  Portal by Krishna Navkar
 
 **NavkarBolg** is a **dynamic blog portal** developed by **Krishna Navkar**. It features **real-time blog statistics**, **dynamic listings**, and **interactive user features**, making it a modern platform for blogging enthusiasts.
 
@@ -20,7 +20,7 @@
 
 ## Features of NavkarBolg
 
-- **Dynamic Blog Listings** – Display blogs dynamically with categories and latest posts.
+- **Dynamic Navkaar_Krishna+_Blog  Listings** – Display blogs dynamically with categories and latest posts.
 - **Real-time Statistics** – Track views, likes, and engagement for each blog post.
 - **Responsive UI** – Works perfectly on mobile, tablet, and desktop devices.
 - **Search & Category Filters** – Easily find blogs using search or filter by category.
@@ -56,7 +56,7 @@ This project also serves as a learning example for **Laravel developers**, datab
 
 ## Keywords
 
-Navkar Blog, Krishna Navkar, Dynamic Blog Portal, Real-time Blog Stats, Laravel Blog Portal, Responsive Blog Website, Blogging Platform
+Navkar Navkaar_Krishna+_Blog , Krishna Navkar, Dynamic Navkaar_Krishna+_Blog  Portal, Real-time Navkaar_Krishna+_Blog  Stats, Laravel Navkaar_Krishna+_Blog  Portal, Responsive Navkaar_Krishna+_Blog  Website, Navkaar_Krishna+_Blog ging Platform
 
 ---
 
