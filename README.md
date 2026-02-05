@@ -15,8 +15,7 @@
 
 **NavkarBolg** is a **dynamic blog portal** developed by **Krishna Navkar**. It features **real-time blog statistics**, **dynamic listings**, and **interactive user features**, making it a modern platform for blogging enthusiasts.
 
-**Live Demo:** [https://krishnaus0530.github.io/NavkarBolg/](https://krishnaus0530.github.io/NavkarBolg/)
-
+**GitHub Repository:** [https://github.com/krishnaus0530/NavkarBolg](https://github.com/krishnaus0530/NavkarBolg)
 ---
 
 ## Features of NavkarBolg
