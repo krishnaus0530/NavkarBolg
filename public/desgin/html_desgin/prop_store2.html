@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Property | PropertyStore</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#323751',
+                        accent: '#e76b53',
+                        'primary-light': '#4a5078',
+                        'accent-light': '#ef8c79',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom styles for file upload and scrollbar */
+        .file-upload-label {
+            border: 2px dashed #cbd5e1;
+            transition: all 0.3s ease;
+        }
+        
+        .file-upload-label:hover {
+            border-color: #e76b53;
+            background-color: rgba(231, 107, 83, 0.05);
+        }
+        
+        .dark .file-upload-label {
+            border-color: #4b5563;
+            background-color: rgba(31, 41, 55, 0.5);
+        }
+        
+        .dark .file-upload-label:hover {
+            border-color: #e76b53;
+            background-color: rgba(231, 107, 83, 0.1);
+        }
+        
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        
+        .dark ::-webkit-scrollbar-track {
+            background: #1f2937;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        
+        .dark ::-webkit-scrollbar-thumb {
+            background: #4b5563;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        
+        .dark ::-webkit-scrollbar-thumb:hover {
+            background: #6b7280;
+        }
+        
+        /* Animation for file preview items */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .file-preview-item {
+            animation: fadeIn 0.3s ease-out;
+        }
+        
+        /* Focus styles */
+        .form-control:focus {
+            box-shadow: 0 0 0 3px rgba(231, 107, 83, 0.2);
+        }
+        
+        .dark .form-control:focus {
+            box-shadow: 0 0 0 3px rgba(231, 107, 83, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 min-h-screen transition-colors duration-300">
+    <div class="container mx-auto px-4 py-6 max-w-5xl">
+        <!-- Header -->
+        <header class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 p-4 bg-white dark:bg-gray-800 rounded-xl shadow-sm">
+            <div class="flex items-center mb-4 md:mb-0">
+                <a href="#" class="flex items-center space-x-3">
+                    <div class="bg-primary p-3 rounded-xl">
+                        <i class="fas fa-home text-white text-xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold text-primary dark:text-white">PropertyStore</h1>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">Premium Property Listings</p>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="flex flex-wrap gap-3">
+                <a href="#" class="px-4 py-2.5 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 rounded-lg font-medium transition-colors duration-200 flex items-center">
+                    <i class="fas fa-arrow-left mr-2"></i>
+                    Back to Properties
+                </a>
+                <a href="#" class="px-4 py-2.5 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 rounded-lg font-medium transition-colors duration-200 flex items-center">
+                    <i class="fas fa-question-circle mr-2"></i>
+                    Help
+                </a>
+                <button id="themeToggle" class="px-4 py-2.5 bg-primary hover:bg-primary-light text-white rounded-lg font-medium transition-colors duration-200 flex items-center">
+                    <i class="fas fa-moon mr-2"></i>
+                    Dark Mode
+                </button>
+            </div>
+        </header>
+        
+        <!-- Form Container -->
+        <main class="bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden mb-8">
+            <!-- Form Header -->
+            <div class="p-6 border-b border-gray-200 dark:border-gray-700">
+                <p class="text-gray-600 dark:text-gray-400">Fill in the details below to list your property. Fields marked with <span class="text-accent">*</span> are required.</p>
+            </div>
+            
+            <form class="p-6" id="propertyForm">
+                <!-- Basic Information Section -->
+                <section class="mb-10">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-accent/10 p-2 rounded-lg mr-3">
+                            <i class="fas fa-info-circle text-accent text-lg"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-white">Basic Information</h3>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="propertyTitle" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                Property Title <span class="text-accent">*</span>
+                            </label>
+                            <input type="text" id="propertyTitle" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 focus:ring-2 focus:ring-accent/30 focus:border-accent form-control transition-all duration-200" placeholder="e.g. Luxury Villa with Ocean View" required>
+                        </div>
+                        
+                        <div>
+                            <label for="location" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                Location <span class="text-accent">*</span>
+                            </label>
+                            <input type="text" id="location" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 focus:ring-2 focus:ring-accent/30 focus:border-accent form-control transition-all duration-200" placeholder="e.g. 123 Main St, New York, NY" required>
+                        </div>
+                        
+                </section>
+                
+                <!-- Description Section -->
+                <section class="mb-10">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-accent/10 p-2 rounded-lg mr-3">
+                            <i class="fas fa-align-left text-accent text-lg"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-white">Description</h3>
+                    </div>
+                    
+                    <div>
+                        <label for="description" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                            Property Description <span class="text-accent">*</span>
+                        </label>
+                        <textarea id="description" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 focus:ring-2 focus:ring-accent/30 focus:border-accent form-control transition-all duration-200" placeholder="Describe the property features, amenities, neighborhood, etc." rows="5" maxlength="2000" required></textarea>
+                        <div class="flex justify-between mt-2">
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Provide a detailed description to attract potential buyers/renters</p>
+                            <div class="text-sm text-gray-500 dark:text-gray-400">
+                                <span id="charCount">0</span>/2000 characters
+                            </div>
+                        </div>
+                    </div>
+                </section>
+      
+                
+                <!-- Property Images Section -->
+                <section class="mb-10">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-accent/10 p-2 rounded-lg mr-3">
+                            <i class="fas fa-images text-accent text-lg"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-white">Property Images</h3>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                            Upload Property Images <span class="text-accent">*</span>
+                        </label>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">Upload at least 3 high-quality images of your property. First image will be used as the cover. Supported formats: PNG, JPG, WebP up to 5MB each.</p>
+                        
+                        <div class="file-upload-container mb-4">
+                            <input type="file" id="imageUpload" accept="image/*" multiple class="hidden">
+                            <label for="imageUpload" class="file-upload-label block w-full p-8 text-center rounded-xl cursor-pointer transition-all duration-200">
+                                <i class="fas fa-cloud-upload-alt text-4xl text-gray-400 dark:text-gray-500 mb-4"></i>
+                                <div class="text-lg font-medium text-gray-700 dark:text-gray-300 mb-2">Click to upload images</div>
+                                <div class="text-sm text-gray-500 dark:text-gray-400 mb-1">or drag and drop</div>
+                                <div class="text-sm text-gray-500 dark:text-gray-400">PNG, JPG, WebP up to 5MB each</div>
+                            </label>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" id="filePreview">
+                            <!-- Preview images will appear here -->
+                            <div class="hidden file-preview-item-template">
+                                <div class="relative overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700 group">
+                                    <img src="" alt="Preview" class="w-full h-32 object-cover">
+                                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center">
+                                        <button type="button" class="file-preview-remove p-2 bg-accent text-white rounded-full hover:bg-accent-light transition-colors duration-200">
+                                            <i class="fas fa-times text-sm"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Form Actions -->
+                <div class="flex flex-col sm:flex-row justify-between items-center pt-6 border-t border-gray-200 dark:border-gray-700">
+                    <div class="mb-4 sm:mb-0">
+                       
+                    </div>
+                    
+                    <div class="flex space-x-4">
+                        <button type="submit" class="px-5 py-2.5 bg-primary hover:bg-primary-light text-white rounded-lg font-medium transition-colors duration-200 flex items-center shadow-sm hover:shadow">
+                            <i class="fas fa-plus-circle mr-2"></i>
+                            Add Property
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </main>
+        
+    </div>
+
+</body>
+</html>

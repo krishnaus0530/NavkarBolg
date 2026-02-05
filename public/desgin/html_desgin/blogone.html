@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Insights & Resources | Blog</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .theme-bg {
+            background: linear-gradient(135deg, #f5f3ff 0%, #dbeafe 50%, #ffffff 100%);
+        }
+        
+        .blog-card {
+            transition: all 0.3s ease;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .modal-backdrop {
+            background-color: rgba(17, 24, 39, 0.75);
+        }
+        
+        .modal-container {
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        .prose {
+            max-width: 100%;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Main Container -->
+    <div class="min-h-screen">
+        <!-- Hero Section -->
+        <section class="relative py-20 overflow-hidden theme-bg">
+            <div class="absolute inset-0"></div>
+            <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6 mt-6">
+                        Property Insights & Resources
+                    </h1>
+                    <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+                        Expert advice, market trends, and practical tips for property owners, managers, and residents.
+                    </p>
+                    
+                    <!-- Search Bar -->
+                    <div class="max-w-2xl mx-auto mb-12">
+                        <div class="relative">
+                            <i class="fas fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                            <input
+                                type="text"
+                                id="searchInput"
+                                placeholder="Search articles, topics, or keywords..."
+                                class="w-full pl-12 pr-12 py-4 bg-white border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent shadow-sm"
+                            />
+                            <i class="fas fa-filter absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Content -->
+        <section class="py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Controls -->
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
+                    <!-- Category Filters -->
+                    <div class="flex flex-wrap gap-2" id="categoryFilters">
+                        <!-- Categories will be populated by JavaScript -->
+                    </div>
+
+                    <!-- View Toggle -->
+                    <div class="flex items-center space-x-2 bg-gray-100 p-1 rounded-lg">
+                        <button
+                            id="gridViewBtn"
+                            class="p-2 rounded-md transition-colors bg-white shadow"
+                        >
+                            <div class="grid grid-cols-2 gap-1 w-6 h-6">
+                                <div class="bg-gray-400 rounded-sm"></div>
+                                <div class="bg-gray-400 rounded-sm"></div>
+                                <div class="bg-gray-400 rounded-sm"></div>
+                                <div class="bg-gray-400 rounded-sm"></div>
+                            </div>
+                        </button>
+                        <button
+                            id="listViewBtn"
+                            class="p-2 rounded-md transition-colors hover:bg-gray-200"
+                        >
+                            <div class="space-y-1 w-6 h-6">
+                                <div class="h-1 bg-gray-400 rounded-sm"></div>
+                                <div class="h-1 bg-gray-400 rounded-sm"></div>
+                                <div class="h-1 bg-gray-400 rounded-sm"></div>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Blog Grid -->
+                <div id="blogGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Blog cards will be populated by JavaScript -->
+                </div>
+
+                <!-- No Results (hidden by default) -->
+                <div id="noResults" class="text-center py-20 hidden">
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-gray-100 rounded-full mb-6">
+                        <i class="fas fa-search text-2xl text-gray-400"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                        No articles found
+                    </h3>
+                    <p class="text-gray-600 max-w-md mx-auto">
+                        Try adjusting your search or filter to find what you're looking for.
+                    </p>
+                    <button
+                        id="clearFiltersBtn"
+                        class="mt-4 text-blue-600 font-medium hover:underline"
+                    >
+                        Clear all filters
+                    </button>
+                </div>
+
+                <!-- Load More -->
+                <div id="loadMoreContainer" class="text-center mt-12">
+                    <button id="loadMoreBtn" class="px-8 py-3 bg-white border border-gray-300 text-gray-700 font-medium rounded-xl hover:bg-gray-50 hover:border-gray-400 transition-all shadow-sm hover:shadow">
+                        Load More Articles
+                    </button>
+                </div>
+
+                <!-- Newsletter CTA -->
+                <div class="mt-20 bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl p-8 md:p-12 text-white overflow-hidden">
+                    <div class="relative">
+                        <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+                        <div class="relative z-10 max-w-3xl mx-auto text-center">
+                            <h2 class="text-3xl font-bold mb-4">Never Miss an Update</h2>
+                            <p class="text-blue-100 mb-8 max-w-2xl mx-auto">
+                                Subscribe to our newsletter and get the latest property insights, tips, and industry news delivered straight to your inbox.
+                            </p>
+                            <div class="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
+                                <input
+                                    type="email"
+                                    id="newsletterEmail"
+                                    placeholder="Enter your email"
+                                    class="flex-grow px-6 py-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/30 backdrop-blur-sm"
+                                />
+                                <button id="subscribeBtn" class="px-8 py-4 bg-white text-blue-600 font-semibold rounded-xl hover:bg-gray-100 transition-colors whitespace-nowrap">
+                                    Subscribe Now
+                                </button>
+                            </div>
+                            <p class="text-sm text-blue-200 mt-4">
+                                No spam. Unsubscribe anytime.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Blog Details Modal -->
+    <div id="blogModal" class="fixed inset-0 z-50 overflow-y-auto hidden">
+        <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+            <!-- Backdrop -->
+            <div 
+                id="modalBackdrop"
+                class="fixed inset-0 transition-opacity modal-backdrop"
+            />
+
+            <!-- Modal Content -->
+            <div id="modalContent" class="inline-block w-full max-w-6xl my-8 overflow-hidden text-left align-middle transition-all transform bg-white rounded-2xl shadow-2xl">
+                <!-- Modal content will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Blog Data
+        const blogs = [
+            {
+                id: 1,
+                title: "10 Essential Property Management Tips for New Landlords",
+                excerpt: "Learn the key strategies to effectively manage your rental properties and keep tenants happy.",
+                author: "Sarah Johnson",
+                date: "Nov 15, 2024",
+                readTime: "5 min",
+                category: "Property Tips",
+                tags: ["Landlord", "Management", "Tips", "Beginner"],
+                likes: 142,
+                comments: [
+                    {
+                        id: 1,
+                        author: "John Doe",
+                        avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=john",
+                        content: "Great article! As a new landlord, I found this very helpful.",
+                        date: "2 days ago",
+                        likes: 5
+                    },
+                    {
+                        id: 2,
+                        author: "Jane Smith",
+                        avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=jane",
+                        content: "The section on tenant screening was particularly useful.",
+                        date: "1 week ago",
+                        likes: 3
+                    }
+                ],
+                views: "2.4k",
+                image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800&q=80",
+                content: {
+                    introduction: "Property management can be challenging for new landlords. This guide covers essential tips to help you succeed.",
+                    main: "From tenant screening to maintenance, discover the best practices that will save you time and money. Effective property management requires a balance of firm policies and good communication. Establishing clear expectations from the beginning helps prevent misunderstandings later on."
+                },
+                keyPoints: [
+                    "Proper tenant screening saves future headaches",
+                    "Regular maintenance prevents costly repairs",
+                    "Clear communication builds better relationships",
+                    "Document everything for legal protection"
+                ],
+                authorBio: "Property management expert with 15+ years experience",
+                authorPosts: 156,
+                relatedPosts: [
+                    {
+                        id: 2,
+                        title: "How to Handle Tenant Complaints Professionally",
+                        date: "Nov 10, 2024",
+                        image: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=400&q=80"
+                    },
+                    {
+                        id: 3,
+                        title: "2024 Real Estate Market Predictions",
+                        date: "Nov 5, 2024",
+                        image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=400&q=80"
+                    }
+                ]
+            },
+            {
+                id: 2,
+                title: "How to Handle Tenant Complaints Professionally",
+                excerpt: "A comprehensive guide on managing tenant issues while maintaining positive relationships.",
+                author: "Michael Chen",
+                date: "Nov 10, 2024",
+                readTime: "7 min",
+                category: "Resident Guides",
+                tags: ["Tenant Relations", "Communication", "Conflict Resolution"],
+                likes: 89,
+                comments: [],
+                views: "1.8k",
+                image: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                id: 3,
+                title: "2024 Real Estate Market Predictions",
+                excerpt: "Expert analysis of upcoming trends in the real estate market and what they mean for property owners.",
+                author: "Robert Williams",
+                date: "Nov 5, 2024",
+                readTime: "8 min",
+                category: "Market Trends",
+                tags: ["Market Analysis", "Predictions", "Real Estate"],
+                likes: 215,
+                comments: [],
+                views: "3.1k",
+                image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                id: 4,
+                title: "Seasonal Property Maintenance Checklist",
+                excerpt: "Keep your property in top condition year-round with this comprehensive maintenance guide.",
+                author: "Emma Davis",
+                date: "Oct 28, 2024",
+                readTime: "6 min",
+                category: "Maintenance",
+                tags: ["Maintenance", "Checklist", "Seasonal"],
+                likes: 167,
+                comments: [],
+                views: "2.7k",
+                image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                id: 5,
+                title: "Building Strong Community Relationships",
+                excerpt: "Strategies for fostering positive relationships within your residential community.",
+                author: "David Wilson",
+                date: "Oct 22, 2024",
+                readTime: "4 min",
+                category: "Community",
+                tags: ["Community", "Relationships", "Engagement"],
+                likes: 94,
+                comments: [],
+                views: "1.5k",
+                image: "https://images.unsplash.com/photo-1558036117-15e82a2c9a9a?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                id: 6,
+                title: "Smart Home Technology for Modern Properties",
+                excerpt: "Explore the latest smart home devices that can enhance property value and tenant satisfaction.",
+                author: "Lisa Martinez",
+                date: "Oct 18, 2024",
+                readTime: "9 min",
+                category: "Industry News",
+                tags: ["Technology", "Smart Home", "Innovation"],
+                likes: 178,
+                comments: [],
+                views: "2.9k",
+                image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=80"
+            }
+        ];
+
+        // App State
+        const state = {
+            selectedBlog: null,
+            isModalOpen: false,
+            searchQuery: '',
+            selectedCategory: 'All',
+            viewMode: 'grid',
+            categories: ['All', 'Property Tips', 'Market Trends', 'Resident Guides', 'Industry News', 'Maintenance', 'Community'],
+            currentBlogs: [...blogs],
+            displayedCount: 6
+        };
+
+        // DOM Elements
+        const elements = {
+            searchInput: document.getElementById('searchInput'),
+            categoryFilters: document.getElementById('categoryFilters'),
+            blogGrid: document.getElementById('blogGrid'),
+            noResults: document.getElementById('noResults'),
+            clearFiltersBtn: document.getElementById('clearFiltersBtn'),
+            gridViewBtn: document.getElementById('gridViewBtn'),
+            listViewBtn: document.getElementById('listViewBtn'),
+            loadMoreContainer: document.getElementById('loadMoreContainer'),
+            loadMoreBtn: document.getElementById('loadMoreBtn'),
+            blogModal: document.getElementById('blogModal'),
+            modalBackdrop: document.getElementById('modalBackdrop'),
+            modalContent: document.getElementById('modalContent'),
+            newsletterEmail: document.getElementById('newsletterEmail'),
+            subscribeBtn: document.getElementById('subscribeBtn')
+        };
+
+        // Initialize the app
+        function init() {
+            renderCategoryFilters();
+            renderBlogGrid();
+            setupEventListeners();
+        }
+
+        // Render category filter buttons
+        function renderCategoryFilters() {
+            elements.categoryFilters.innerHTML = '';
+            
+            state.categories.forEach(category => {
+                const button = document.createElement('button');
+                button.textContent = category;
+                button.className = `px-4 py-2 rounded-lg transition-all ${
+                    state.selectedCategory === category
+                        ? 'bg-blue-600 text-white shadow-lg'
+                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                }`;
+                button.addEventListener('click', () => {
+                    state.selectedCategory = category;
+                    renderCategoryFilters();
+                    filterAndRenderBlogs();
+                });
+                elements.categoryFilters.appendChild(button);
+            });
+        }
+
+        // Render blog grid
+        function renderBlogGrid() {
+            elements.blogGrid.innerHTML = '';
+            
+            const filteredBlogs = getFilteredBlogs();
+            const blogsToShow = filteredBlogs.slice(0, state.displayedCount);
+            
+            if (blogsToShow.length === 0) {
+                elements.blogGrid.classList.add('hidden');
+                elements.noResults.classList.remove('hidden');
+                elements.loadMoreContainer.classList.add('hidden');
+                return;
+            }
+            
+            elements.blogGrid.classList.remove('hidden');
+            elements.noResults.classList.add('hidden');
+            
+            // Show/hide load more button
+            if (filteredBlogs.length > state.displayedCount) {
+                elements.loadMoreContainer.classList.remove('hidden');
+            } else {
+                elements.loadMoreContainer.classList.add('hidden');
+            }
+            
+            // Set grid or list view
+            elements.blogGrid.className = state.viewMode === 'grid' 
+                ? "grid md:grid-cols-2 lg:grid-cols-3 gap-8 fade-in"
+                : "space-y-8 fade-in";
+            
+            blogsToShow.forEach(blog => {
+                const blogCard = createBlogCard(blog);
+                elements.blogGrid.appendChild(blogCard);
+            });
+        }
+
+        // Create a blog card element
+        function createBlogCard(blog) {
+            const article = document.createElement('article');
+            article.className = 'blog-card bg-white rounded-2xl border border-gray-200 overflow-hidden hover:border-blue-300 cursor-pointer';
+            article.dataset.blogId = blog.id;
+            
+            // Featured Image
+            const imageUrl = blog.image || `https://images.unsplash.com/photo-${blog.id % 2 === 0 ? '1556740758-90de374c12ad' : '1499750310107-5fef28a66643'}?auto=format&fit=crop&w=800&q=80`;
+            
+            article.innerHTML = `
+                <div class="relative h-48 md:h-56 overflow-hidden">
+                    <img 
+                        src="${imageUrl}"
+                        alt="${blog.title || "Blog Image"}"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div class="absolute top-4 left-4">
+                        <span class="px-3 py-1 bg-blue-600 text-white text-xs font-semibold rounded-full">
+                            ${blog.category || "Category"}
+                        </span>
+                    </div>
+                </div>
+
+                <div class="p-6">
+                    <div class="flex flex-wrap items-center gap-3 text-sm text-gray-500 mb-3">
+                        <div class="flex items-center">
+                            <i class="fas fa-user w-4 h-4 mr-1"></i>
+                            <span>${blog.author || "Author"}</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-calendar w-4 h-4 mr-1"></i>
+                            <span>${blog.date || "Date"}</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-clock w-4 h-4 mr-1"></i>
+                            <span>${blog.readTime || "5 min"}</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xl font-bold text-gray-900 mb-3 line-clamp-2">
+                        ${blog.title || "Blog Title"}
+                    </h3>
+                    
+                    <p class="text-gray-600 mb-4 line-clamp-2">
+                        ${blog.excerpt || "Blog excerpt goes here..."}
+                    </p>
+
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        ${(blog.tags || []).slice(0, 3).map(tag => `
+                            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded-full">
+                                ${tag}
+                            </span>
+                        `).join('')}
+                        ${blog.tags && blog.tags.length > 3 ? `
+                            <span class="px-3 py-1 text-gray-500 text-xs">
+                                +${blog.tags.length - 3} more
+                            </span>
+                        ` : ''}
+                    </div>
+
+                    <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+                        <div class="flex items-center space-x-4">
+                            <div class="flex items-center text-gray-500">
+                                <i class="fas fa-heart w-4 h-4 mr-1"></i>
+                                <span class="text-sm">${blog.likes || 0}</span>
+                            </div>
+                            <div class="flex items-center text-gray-500">
+                                <i class="fas fa-comment w-4 h-4 mr-1"></i>
+                                <span class="text-sm">${blog.comments?.length || 0}</span>
+                            </div>
+                            <div class="flex items-center text-gray-500">
+                                <i class="fas fa-eye w-4 h-4 mr-1"></i>
+                                <span class="text-sm">${blog.views || "0"}</span>
+                            </div>
+                        </div>
+                        <button class="text-blue-600 font-medium text-sm flex items-center read-more-btn">
+                            Read More
+                            <i class="fas fa-arrow-right w-4 h-4 ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            // Add click event to the whole card and read more button
+            const readMoreBtn = article.querySelector('.read-more-btn');
+            const clickHandler = () => openBlogModal(blog);
+            
+            article.addEventListener('click', clickHandler);
+            readMoreBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                clickHandler();
+            });
+            
+            return article;
+        }
+
+        // Filter blogs based on search and category
+        function getFilteredBlogs() {
+            return blogs.filter(blog => {
+                if (!blog) return false;
+                
+                const matchesSearch = blog.title.toLowerCase().includes(state.searchQuery.toLowerCase()) || 
+                                     blog.excerpt.toLowerCase().includes(state.searchQuery.toLowerCase()) ||
+                                     (blog.tags && blog.tags.some(tag => tag.toLowerCase().includes(state.searchQuery.toLowerCase())));
+                const matchesCategory = state.selectedCategory === 'All' || blog.category === state.selectedCategory;
+                return matchesSearch && matchesCategory;
+            });
+        }
+
+        // Filter and render blogs
+        function filterAndRenderBlogs() {
+            state.displayedCount = 6;
+            renderBlogGrid();
+        }
+
+        // Open blog modal with details
+        function openBlogModal(blog) {
+            state.selectedBlog = blog;
+            state.isModalOpen = true;
+            
+            // Create modal content
+            const modalContent = createBlogModalContent(blog);
+            elements.modalContent.innerHTML = modalContent;
+            
+            // Show modal
+            elements.blogModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            
+            // Add event listeners for modal buttons
+            setTimeout(() => {
+                setupModalEventListeners(blog);
+            }, 10);
+        }
+
+        // Create blog modal content
+        function createBlogModalContent(blog) {
+            const imageUrl = blog.image || `https://images.unsplash.com/photo-${blog.id % 2 === 0 ? '1556740758-90de374c12ad' : '1499750310107-5fef28a66643'}?auto=format&fit=crop&w=1600&q=80`;
+            const authorAvatar = `https://api.dicebear.com/7.x/avataaars/svg?seed=${blog.author || "author"}`;
+            
+            return `
+                <!-- Close Button -->
+                <button id="closeModalBtn" class="absolute top-4 right-4 z-10 p-2 bg-white/90 backdrop-blur-sm rounded-full hover:bg-white shadow-lg transition-all hover:scale-110">
+                    <i class="fas fa-times text-gray-700 text-xl"></i>
+                </button>
+
+                <!-- Blog Hero Image -->
+                <div class="relative h-64 md:h-96">
+                    <img 
+                        src="${imageUrl}"
+                        alt="${blog.title || "Blog Image"}"
+                        class="w-full h-full object-cover"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    <div class="absolute bottom-8 left-8 right-8">
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-4 py-2 bg-blue-600 text-white font-semibold rounded-full">
+                                ${blog.category || "Uncategorized"}
+                            </span>
+                        </div>
+                        <h1 class="text-3xl md:text-4xl font-bold text-white mb-4">
+                            ${blog.title || "Blog Title"}
+                        </h1>
+                        <div class="flex flex-wrap items-center gap-4 text-white/90">
+                            <div class="flex items-center">
+                                <img 
+                                    src="${authorAvatar}"
+                                    alt="${blog.author || "Author"}"
+                                    class="w-8 h-8 rounded-full mr-2"
+                                />
+                                <span>${blog.author || "Author"}</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-calendar w-4 h-4 mr-1"></i>
+                                <span>${blog.date || "Date"}</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-clock w-4 h-4 mr-1"></i>
+                                <span>${blog.readTime || "5"} min read</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Content -->
+                <div class="grid lg:grid-cols-3 gap-8 p-8">
+                    <!-- Main Content - 2/3 width -->
+                    <div class="lg:col-span-2">
+                        <!-- Action Bar -->
+                        <div class="flex flex-wrap items-center justify-between gap-4 mb-8 p-4 bg-gray-50 rounded-xl">
+                            <div class="flex items-center space-x-4">
+                                <button id="likeBtn" class="flex items-center px-4 py-2 bg-white text-gray-700 rounded-lg hover:bg-gray-100 transition-colors">
+                                    <i class="fas fa-heart w-5 h-5 mr-2"></i>
+                                    <span id="likeCount">${blog.likes || 0}</span>
+                                </button>
+                                <button id="commentToggleBtn" class="flex items-center px-4 py-2 bg-white text-gray-700 rounded-lg hover:bg-gray-100 transition-colors">
+                                    <i class="fas fa-comment w-5 h-5 mr-2"></i>
+                                    <span id="commentCount">${blog.comments?.length || 0}</span>
+                                </button>
+                                <button id="shareBtn" class="flex items-center px-4 py-2 bg-white text-gray-700 rounded-lg hover:bg-gray-100 transition-colors">
+                                    <i class="fas fa-share-alt w-5 h-5 mr-2"></i>
+                                    <span>Share</span>
+                                </button>
+                            </div>
+                            <button id="bookmarkBtn" class="flex items-center px-4 py-2 bg-white text-gray-700 rounded-lg hover:bg-gray-100 transition-colors">
+                                <i class="fas fa-bookmark w-5 h-5 mr-2"></i>
+                                <span>Bookmark</span>
+                            </button>
+                        </div>
+
+                        <!-- Article Content -->
+                        <div class="prose max-w-none">
+                            <p class="text-xl text-gray-600 mb-8">
+                                ${blog.excerpt || "Blog excerpt goes here..."}
+                            </p>
+                            
+                            <div class="mb-8">
+                                <h2 class="text-2xl font-bold text-gray-900 mb-4">Introduction</h2>
+                                <p class="text-gray-700 mb-4">
+                                    ${blog.content?.introduction || "This is the introduction section of the blog post. It provides an overview of what the reader can expect to learn from this article."}
+                                </p>
+                            </div>
+
+                            <div class="mb-8">
+                                <h2 class="text-2xl font-bold text-gray-900 mb-4">Main Content</h2>
+                                <p class="text-gray-700 mb-4">
+                                    ${blog.content?.main || "The main content goes here. This is where you'll find detailed information, analysis, and insights related to the blog topic."}
+                                </p>
+                                <div class="bg-blue-50 border-l-4 border-blue-500 p-6 my-6 rounded-r-lg">
+                                    <p class="text-gray-700 italic">
+                                        "Key insights and important quotes can be highlighted here to draw attention to the most valuable information."
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="mb-8">
+                                <h2 class="text-2xl font-bold text-gray-900 mb-4">Key Takeaways</h2>
+                                <ul class="space-y-3" id="keyPointsList">
+                                    ${(blog.keyPoints || [
+                                        "Important point one",
+                                        "Important point two", 
+                                        "Important point three"
+                                    ]).map((point, index) => `
+                                        <li key="${index}" class="flex items-start">
+                                            <div class="flex-shrink-0 w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center mr-3 mt-1">
+                                                <i class="fas fa-chevron-right text-blue-600"></i>
+                                            </div>
+                                            <span class="text-gray-700">${point}</span>
+                                        </li>
+                                    `).join('')}
+                                </ul>
+                            </div>
+
+                            <!-- Tags -->
+                            <div class="flex flex-wrap gap-2 mt-8 pt-8 border-t border-gray-200">
+                                ${(blog.tags || ["blog", "article"]).map(tag => `
+                                    <span class="px-4 py-2 bg-gray-100 text-gray-700 font-medium rounded-full">
+                                        #${tag}
+                                    </span>
+                                `).join('')}
+                            </div>
+                        </div>
+
+                        <!-- Comments Section -->
+                        <div id="commentsSection" class="mt-12 pt-8 border-t border-gray-200 hidden">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-6">Comments (<span id="totalComments">${blog.comments?.length || 0}</span>)</h3>
+                            
+                            <!-- Add Comment -->
+                            <div class="mb-8 bg-gray-50 rounded-xl p-6">
+                                <textarea
+                                    id="commentInput"
+                                    placeholder="Share your thoughts..."
+                                    rows="3"
+                                    class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent mb-4"
+                                ></textarea>
+                                <div class="flex justify-end">
+                                    <button
+                                        id="postCommentBtn"
+                                        class="px-6 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                                    >
+                                        Post Comment
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Comments List -->
+                            <div id="commentsList" class="space-y-6">
+                                ${blog.comments && blog.comments.length > 0 ? 
+                                    blog.comments.map(comment => `
+                                        <div class="bg-white border border-gray-200 rounded-xl p-6">
+                                            <div class="flex items-start justify-between mb-4">
+                                                <div class="flex items-center">
+                                                    <img 
+                                                        src="${comment.avatar}"
+                                                        alt="${comment.author}"
+                                                        class="w-10 h-10 rounded-full mr-3"
+                                                    />
+                                                    <div>
+                                                        <h4 class="font-semibold text-gray-900">${comment.author}</h4>
+                                                        <p class="text-sm text-gray-500">${comment.date}</p>
+                                                    </div>
+                                                </div>
+                                                <button class="text-gray-400 hover:text-gray-600">
+                                                    <i class="fas fa-heart w-5 h-5"></i>
+                                                </button>
+                                            </div>
+                                            <p class="text-gray-700">${comment.content}</p>
+                                        </div>
+                                    `).join('') 
+                                    : '<p class="text-gray-500 text-center py-4">No comments yet. Be the first to comment!</p>'
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sidebar - 1/3 width -->
+                    <div class="lg:col-span-1">
+                        <!-- Author Card -->
+                        <div class="bg-gradient-to-br from-blue-50 to-white rounded-2xl p-6 mb-8 border border-blue-100">
+                            <div class="text-center mb-4">
+                                <img 
+                                    src="${authorAvatar}"
+                                    alt="${blog.author || "Author"}"
+                                    class="w-20 h-20 rounded-full mx-auto mb-4 border-4 border-white shadow-lg"
+                                />
+                                <h3 class="font-bold text-gray-900 text-lg">${blog.author || "Author"}</h3>
+                                <p class="text-gray-600 text-sm mb-4">Senior Writer</p>
+                                <p class="text-gray-500 text-sm">
+                                    ${blog.authorBio || "Expert in property management with 10+ years of experience. Passionate about helping residents and improving communities."}
+                                </p>
+                            </div>
+                            <div class="grid grid-cols-3 gap-4 text-center mt-6">
+                                <div>
+                                    <div class="font-bold text-gray-900">${blog.authorPosts || 42}</div>
+                                    <div class="text-xs text-gray-500">Posts</div>
+                                </div>
+                                <div>
+                                    <div class="font-bold text-gray-900">2.4K</div>
+                                    <div class="text-xs text-gray-500">Followers</div>
+                                </div>
+                                <div>
+                                    <div class="font-bold text-gray-900">5</div>
+                                    <div class="text-xs text-gray-500">Years</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Related Posts -->
+                        <div class="bg-white border border-gray-200 rounded-2xl p-6">
+                            <h3 class="font-bold text-gray-900 text-lg mb-6">Related Articles</h3>
+                            <div class="space-y-6" id="relatedPosts">
+                                ${(blog.relatedPosts || [
+                                    { id: 1, title: "Related Article One", date: "Nov 10, 2024", image: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=400&q=80" },
+                                    { id: 2, title: "Related Article Two", date: "Nov 5, 2024", image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=400&q=80" }
+                                ]).map(related => `
+                                    <div class="related-post group cursor-pointer" data-related-id="${related.id}">
+                                        <div class="flex items-start space-x-4">
+                                            <div class="flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden">
+                                                <img 
+                                                    src="${related.image}"
+                                                    alt="${related.title}"
+                                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                                                />
+                                            </div>
+                                            <div>
+                                                <h4 class="font-semibold text-gray-900 text-sm line-clamp-2">
+                                                    ${related.title}
+                                                </h4>
+                                                <p class="text-xs text-gray-500 mt-1">${related.date}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+
+                        <!-- Newsletter Signup -->
+                        <div class="mt-8 bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl p-6 text-white">
+                            <h3 class="font-bold text-lg mb-3">Stay Updated</h3>
+                            <p class="text-purple-100 text-sm mb-4">
+                                Get the latest articles and tips delivered to your inbox.
+                            </p>
+                            <div class="space-y-3">
+                                <input
+                                    type="email"
+                                    id="modalNewsletterEmail"
+                                    placeholder="Your email address"
+                                    class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/30"
+                                />
+                                <button id="modalSubscribeBtn" class="w-full bg-white text-purple-600 font-semibold py-3 rounded-lg hover:bg-gray-100 transition-colors">
+                                    Subscribe
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Setup modal event listeners
+        function setupModalEventListeners(blog) {
+            // Close modal button
+            const closeModalBtn = document.getElementById('closeModalBtn');
+            if (closeModalBtn) {
+                closeModalBtn.addEventListener('click', closeBlogModal);
+            }
+            
+            // Modal backdrop
+            elements.modalBackdrop.addEventListener('click', closeBlogModal);
+            
+            // Like button
+            const likeBtn = document.getElementById('likeBtn');
+            const likeCount = document.getElementById('likeCount');
+            let liked = false;
+            
+            if (likeBtn) {
+                likeBtn.addEventListener('click', () => {
+                    liked = !liked;
+                    likeBtn.classList.toggle('bg-red-50', liked);
+                    likeBtn.classList.toggle('text-red-600', liked);
+                    likeBtn.classList.toggle('bg-white', !liked);
+                    likeBtn.classList.toggle('text-gray-700', !liked);
+                    
+                    const heartIcon = likeBtn.querySelector('i');
+                    if (liked) {
+                        heartIcon.classList.add('fas');
+                        heartIcon.classList.remove('far');
+                        likeCount.textContent = parseInt(likeCount.textContent) + 1;
+                    } else {
+                        heartIcon.classList.add('far');
+                        heartIcon.classList.remove('fas');
+                        likeCount.textContent = parseInt(likeCount.textContent) - 1;
+                    }
+                });
+            }
+            
+            // Comment toggle button
+            const commentToggleBtn = document.getElementById('commentToggleBtn');
+            const commentsSection = document.getElementById('commentsSection');
+            
+            if (commentToggleBtn) {
+                commentToggleBtn.addEventListener('click', () => {
+                    commentsSection.classList.toggle('hidden');
+                });
+            }
+            
+            // Bookmark button
+            const bookmarkBtn = document.getElementById('bookmarkBtn');
+            let bookmarked = false;
+            
+            if (bookmarkBtn) {
+                bookmarkBtn.addEventListener('click', () => {
+                    bookmarked = !bookmarked;
+                    bookmarkBtn.classList.toggle('bg-blue-50', bookmarked);
+                    bookmarkBtn.classList.toggle('text-blue-600', bookmarked);
+                    bookmarkBtn.classList.toggle('bg-white', !bookmarked);
+                    bookmarkBtn.classList.toggle('text-gray-700', !bookmarked);
+                    
+                    const bookmarkText = bookmarkBtn.querySelector('span');
+                    if (bookmarkText) {
+                        bookmarkText.textContent = bookmarked ? 'Bookmarked' : 'Bookmark';
+                    }
+                });
+            }
+            
+            // Post comment button
+            const postCommentBtn = document.getElementById('postCommentBtn');
+            const commentInput = document.getElementById('commentInput');
+            const commentsList = document.getElementById('commentsList');
+            const totalComments = document.getElementById('totalComments');
+            const commentCount = document.getElementById('commentCount');
+            
+            if (postCommentBtn && commentInput) {
+                commentInput.addEventListener('input', () => {
+                    postCommentBtn.disabled = !commentInput.value.trim();
+                });
+                
+                postCommentBtn.addEventListener('click', () => {
+                    if (commentInput.value.trim()) {
+                        const newComment = {
+                            id: blog.comments ? blog.comments.length + 1 : 1,
+                            author: 'You',
+                            avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=user',
+                            content: commentInput.value,
+                            date: 'Just now',
+                            likes: 0
+                        };
+                        
+                        // Add to blog comments
+                        if (!blog.comments) blog.comments = [];
+                        blog.comments.unshift(newComment);
+                        
+                        // Update comments list
+                        const commentElement = document.createElement('div');
+                        commentElement.className = 'bg-white border border-gray-200 rounded-xl p-6';
+                        commentElement.innerHTML = `
+                            <div class="flex items-start justify-between mb-4">
+                                <div class="flex items-center">
+                                    <img 
+                                        src="${newComment.avatar}"
+                                        alt="${newComment.author}"
+                                        class="w-10 h-10 rounded-full mr-3"
+                                    />
+                                    <div>
+                                        <h4 class="font-semibold text-gray-900">${newComment.author}</h4>
+                                        <p class="text-sm text-gray-500">${newComment.date}</p>
+                                    </div>
+                                </div>
+                                <button class="text-gray-400 hover:text-gray-600">
+                                    <i class="fas fa-heart w-5 h-5"></i>
+                                </button>
+                            </div>
+                            <p class="text-gray-700">${newComment.content}</p>
+                        `;
+                        
+                        // If there's a "no comments" message, replace it
+                        if (commentsList.querySelector('p.text-center')) {
+                            commentsList.innerHTML = '';
+                        }
+                        
+                        commentsList.insertBefore(commentElement, commentsList.firstChild);
+                        
+                        // Update comment counts
+                        const currentCount = parseInt(totalComments.textContent);
+                        totalComments.textContent = currentCount + 1;
+                        commentCount.textContent = currentCount + 1;
+                        
+                        // Clear input
+                        commentInput.value = '';
+                        postCommentBtn.disabled = true;
+                    }
+                });
+            }
+            
+            // Related posts
+            const relatedPosts = document.querySelectorAll('.related-post');
+            relatedPosts.forEach(post => {
+                post.addEventListener('click', () => {
+                    const relatedId = parseInt(post.dataset.relatedId);
+                    const relatedBlog = blogs.find(b => b.id === relatedId);
+                    if (relatedBlog) {
+                        openBlogModal(relatedBlog);
+                    }
+                });
+            });
+            
+            // Modal newsletter subscription
+            const modalSubscribeBtn = document.getElementById('modalSubscribeBtn');
+            const modalNewsletterEmail = document.getElementById('modalNewsletterEmail');
+            
+            if (modalSubscribeBtn) {
+                modalSubscribeBtn.addEventListener('click', () => {
+                    if (modalNewsletterEmail.value) {
+                        alert(`Thank you for subscribing with email: ${modalNewsletterEmail.value}`);
+                        modalNewsletterEmail.value = '';
+                    } else {
+                        alert('Please enter your email address');
+                    }
+                });
+            }
+        }
+
+        // Close blog modal
+        function closeBlogModal() {
+            state.isModalOpen = false;
+            elements.blogModal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            // Search input
+            elements.searchInput.addEventListener('input', (e) => {
+                state.searchQuery = e.target.value;
+                filterAndRenderBlogs();
+            });
+            
+            // Clear filters button
+            elements.clearFiltersBtn.addEventListener('click', () => {
+                state.searchQuery = '';
+                state.selectedCategory = 'All';
+                elements.searchInput.value = '';
+                renderCategoryFilters();
+                filterAndRenderBlogs();
+            });
+            
+            // View toggle buttons
+            elements.gridViewBtn.addEventListener('click', () => {
+                state.viewMode = 'grid';
+                elements.gridViewBtn.classList.add('bg-white', 'shadow');
+                elements.gridViewBtn.classList.remove('hover:bg-gray-200');
+                elements.listViewBtn.classList.remove('bg-white', 'shadow');
+                elements.listViewBtn.classList.add('hover:bg-gray-200');
+                renderBlogGrid();
+            });
+            
+            elements.listViewBtn.addEventListener('click', () => {
+                state.viewMode = 'list';
+                elements.listViewBtn.classList.add('bg-white', 'shadow');
+                elements.listViewBtn.classList.remove('hover:bg-gray-200');
+                elements.gridViewBtn.classList.remove('bg-white', 'shadow');
+                elements.gridViewBtn.classList.add('hover:bg-gray-200');
+                renderBlogGrid();
+            });
+            
+            // Load more button
+            elements.loadMoreBtn.addEventListener('click', () => {
+                state.displayedCount += 3;
+                renderBlogGrid();
+            });
+            
+            // Newsletter subscription
+            elements.subscribeBtn.addEventListener('click', () => {
+                if (elements.newsletterEmail.value) {
+                    alert(`Thank you for subscribing with email: ${elements.newsletterEmail.value}`);
+                    elements.newsletterEmail.value = '';
+                } else {
+                    alert('Please enter your email address');
+                }
+            });
+            
+            // Escape key to close modal
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && state.isModalOpen) {
+                    closeBlogModal();
+                }
+            });
+        }
+
+        // Initialize the app when DOM is loaded
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>

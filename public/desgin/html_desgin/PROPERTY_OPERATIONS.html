@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Operations - Triumph Residential Services</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom colors */
+        :root {
+            --primary-color: #323751;
+            --secondary-color: #e76b53;
+            --light-bg: #f8f9fa;
+        }
+        
+        .bg-primary {
+            background-color: var(--primary-color);
+        }
+        
+        .text-primary {
+            color: var(--primary-color);
+        }
+        
+        .border-primary {
+            border-color: var(--primary-color);
+        }
+        
+        .bg-secondary {
+            background-color: var(--secondary-color);
+        }
+        
+        .text-secondary {
+            color: var(--secondary-color);
+        }
+        
+        .border-secondary {
+            border-color: var(--secondary-color);
+        }
+        
+        .bg-light {
+            background-color: var(--light-bg);
+        }
+        
+        /* Accordion styles */
+        .accordion-item {
+            border-radius: 10px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+        
+        .accordion-item:hover {
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        .accordion-header {
+            padding: 24px;
+            background-color: white;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .accordion-header:hover {
+            background-color: #f8fafc;
+        }
+        
+        .accordion-header.active {
+            background-color: #f1f5f9;
+        }
+        
+        .accordion-icon {
+            transition: transform 0.3s ease;
+        }
+        
+        .accordion-header.active .accordion-icon {
+            transform: rotate(45deg);
+        }
+        
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background-color: white;
+        }
+        
+        .accordion-content-inner {
+            padding: 0 24px 24px;
+        }
+        
+        /* Service card hover effects */
+        .service-card {
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        /* Custom animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation (Reusing from your previous design) -->
+    <nav class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <img src="../desgin/Triumph_Logo.png" alt="Logo" class="h-12">
+                <div class="hidden md:flex space-x-8">
+                    <a class="font-semibold text-primary hover:text-secondary transition-colors" href="/">Home</a>
+                    <a class="font-semibold text-primary hover:text-secondary transition-colors" href="/About">About</a>
+                    <a class="font-semibold text-secondary border-b-2 border-secondary" href="/service">Services</a>
+                    <a class="font-semibold text-primary hover:text-secondary transition-colors" href="/properties">Property</a>
+                    <a class="font-semibold text-primary hover:text-secondary transition-colors" href="/blog">Blog</a>
+                    <a class="font-semibold text-primary hover:text-secondary transition-colors" href="/contact">Contact</a>
+                </div>
+                <div class="md:hidden">
+                    <button class="text-2xl text-primary">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="site-content fade-in">
+        <div class="max-w-7xl mx-auto px-4 py-12">
+            <!-- Page Header -->
+            <div class="text-center mb-12">
+                <h1 class="text-4xl md:text-5xl font-bold text-primary mb-6">Property Operations</h1>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Triumph Residential Services brings an end-to-end management approach to Affordable Housing that allows us to implement efficient and time-tested operational standards. We have a continuous personal presence at your property, ensuring our culture of management and leadership is realized with all of our associates.
+                </p>
+            </div>
+
+            <!-- Services Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <!-- Marketing Card -->
+                <div class="service-card bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-300">
+                    <div class="flex flex-col items-center text-center">
+                        <div class="w-20 h-20 bg-secondary/10 rounded-full flex items-center justify-center mb-6">
+                            <i class="fas fa-bullhorn text-secondary text-3xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-primary mb-4">Marketing</h3>
+                        <p class="text-gray-600 mb-6">
+                            We advertise our vacancies across multiple online platforms and conduct email campaigns to reach interested organizations.
+                        </p>
+                        <a href="https://triumphresidential.com/marketing/" class="text-secondary font-semibold hover:text-primary transition-colors flex items-center group">
+                            Learn More <i class="fas fa-arrow-right ml-2 group-hover:translate-x-2 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Tenant Screening Card -->
+                <div class="service-card bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-300">
+                    <div class="flex flex-col items-center text-center">
+                        <div class="w-20 h-20 bg-secondary/10 rounded-full flex items-center justify-center mb-6">
+                            <i class="fas fa-search text-secondary text-3xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-primary mb-4">Tenant Screening</h3>
+                        <p class="text-gray-600 mb-6">
+                            We conduct exhaustive screening measures to ensure quality tenants.
+                        </p>
+                        <a href="https://triumphresidential.com/tenant-screening/" class="text-secondary font-semibold hover:text-primary transition-colors flex items-center group">
+                            Learn More <i class="fas fa-arrow-right ml-2 group-hover:translate-x-2 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Leasing Card -->
+                <div class="service-card bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-300">
+                    <div class="flex flex-col items-center text-center">
+                        <div class="w-20 h-20 bg-secondary/10 rounded-full flex items-center justify-center mb-6">
+                            <i class="far fa-handshake text-secondary text-3xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-primary mb-4">Leasing</h3>
+                        <p class="text-gray-600 mb-6">
+                            We execute lease and lease renewals prepared by our professional team.
+                        </p>
+                        <a href="https://triumphresidential.com/leasing/" class="text-secondary font-semibold hover:text-primary transition-colors flex items-center group">
+                            Learn More <i class="fas fa-arrow-right ml-2 group-hover:translate-x-2 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Rent Collection Card -->
+                <div class="service-card bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-300">
+                    <div class="flex flex-col items-center text-center">
+                        <div class="w-20 h-20 bg-secondary/10 rounded-full flex items-center justify-center mb-6">
+                            <i class="fas fa-dollar-sign text-secondary text-3xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-primary mb-4">Rent Collection</h3>
+                        <p class="text-gray-600 mb-6">
+                            We offer a variety of ways to rent which leads to collecting rent every month in a timely and orderly fashion.
+                        </p>
+                        <a href="https://triumphresidential.com/rent-collection/" class="text-secondary font-semibold hover:text-primary transition-colors flex items-center group">
+                            Learn More <i class="fas fa-arrow-right ml-2 group-hover:translate-x-2 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Emergency Services Card -->
+                <div class="service-card bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-300">
+                    <div class="flex flex-col items-center text-center">
+                        <div class="w-20 h-20 bg-secondary/10 rounded-full flex items-center justify-center mb-6">
+                            <i class="fas fa-phone-alt text-secondary text-3xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-primary mb-4">Emergency Services</h3>
+                        <p class="text-gray-600 mb-6">
+                            We provide an emergency service line which connects to a professional representative 24 hours and 7 days a week.
+                        </p>
+                        <a href="https://triumphresidential.com/emergency-services/" class="text-secondary font-semibold hover:text-primary transition-colors flex items-center group">
+                            Learn More <i class="fas fa-arrow-right ml-2 group-hover:translate-x-2 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Maintenance Card -->
+                <div class="service-card bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-300">
+                    <div class="flex flex-col items-center text-center">
+                        <div class="w-20 h-20 bg-secondary/10 rounded-full flex items-center justify-center mb-6">
+                            <i class="fas fa-wrench text-secondary text-3xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-primary mb-4">Maintenance</h3>
+                        <p class="text-gray-600 mb-6">
+                            We conduct inspections upon move-in and move-out and ensure all maintenance issues are addressed in a timely manner.
+                        </p>
+                        <a href="https://triumphresidential.com/maintenance/" class="text-secondary font-semibold hover:text-primary transition-colors flex items-center group">
+                            Learn More <i class="fas fa-arrow-right ml-2 group-hover:translate-x-2 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Accordion Section -->
+            <div class="bg-white rounded-2xl shadow-lg p-8 mb-12">
+                <div class="text-center mb-10">
+                    <h2 class="text-3xl font-bold text-primary mb-4">Property Operations Details</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">Learn more about our comprehensive property management services</p>
+                </div>
+
+                <div class="accordion-container max-w-4xl mx-auto">
+                    <!-- Marketing Accordion -->
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mr-4">
+                                    <i class="fas fa-bullhorn text-secondary text-xl"></i>
+                                </div>
+                                <div class="text-left">
+                                    <h3 class="text-xl font-bold text-primary">Marketing Strategy</h3>
+                                    <p class="text-gray-500 text-sm mt-1">Multi-platform advertising and outreach</p>
+                                </div>
+                            </div>
+                            <div class="accordion-icon">
+                                <i class="fas fa-plus text-secondary text-xl"></i>
+                            </div>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-content-inner">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div>
+                                        <h4 class="font-semibold text-primary mb-3">Our Approach</h4>
+                                        <p class="text-gray-600 mb-4">We implement a comprehensive marketing strategy that combines digital and traditional methods to maximize property visibility and attract qualified tenants.</p>
+                                        <ul class="space-y-2">
+                                            <li class="flex items-center">
+                                                <i class="fas fa-check text-secondary mr-3"></i>
+                                                <span class="text-gray-600">Online listing optimization</span>
+                                            </li>
+                                            <li class="flex items-center">
+                                                <i class="fas fa-check text-secondary mr-3"></i>
+                                                <span class="text-gray-600">Social media advertising campaigns</span>
+                                            </li>
+                                            <li class="flex items-center">
+                                                <i class="fas fa-check text-secondary mr-3"></i>
+                                                <span class="text-gray-600">Email marketing to targeted audiences</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-primary mb-3">Key Benefits</h4>
+                                        <ul class="space-y-3">
+                                            <li class="flex items-start">
+                                                <div class="w-8 h-8 bg-secondary/10 rounded-full flex items-center justify-center mr-3 mt-1">
+                                                    <i class="fas fa-chart-line text-secondary text-sm"></i>
+                                                </div>
+                                                <div>
+                                                    <p class="font-medium text-primary">Faster Occupancy</p>
+                                                    <p class="text-gray-600 text-sm">Reduce vacancy periods with targeted advertising</p>
+                                                </div>
+                                            </li>
+                                            <li class="flex items-start">
+                                                <div class="w-8 h-8 bg-secondary/10 rounded-full flex items-center justify-center mr-3 mt-1">
+                                                    <i class="fas fa-users text-secondary text-sm"></i>
+                                                </div>
+                                                <div>
+                                                    <p class="font-medium text-primary">Quality Leads</p>
+                                                    <p class="text-gray-600 text-sm">Attract pre-qualified tenants through strategic marketing</p>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tenant Screening Accordion -->
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mr-4">
+                                    <i class="fas fa-search text-secondary text-xl"></i>
+                                </div>
+                                <div class="text-left">
+                                    <h3 class="text-xl font-bold text-primary">Tenant Screening Process</h3>
+                                    <p class="text-gray-500 text-sm mt-1">Comprehensive background checks and verification</p>
+                                </div>
+                            </div>
+                            <div class="accordion-icon">
+                                <i class="fas fa-plus text-secondary text-xl"></i>
+                            </div>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-content-inner">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div>
+                                        <h4 class="font-semibold text-primary mb-3">Screening Criteria</h4>
+                                        <p class="text-gray-600 mb-4">Our rigorous screening process ensures we select reliable tenants who will maintain the property and pay rent consistently.</p>
+                                        <div class="space-y-4">
+                                            <div class="bg-gray-50 p-4 rounded-lg">
+                                                <p class="font-medium text-primary mb-1">Credit History Check</p>
+                                                <p class="text-gray-600 text-sm">Comprehensive credit analysis and financial responsibility assessment</p>
+                                            </div>
+                                            <div class="bg-gray-50 p-4 rounded-lg">
+                                                <p class="font-medium text-primary mb-1">Rental History Verification</p>
+                                                <p class="text-gray-600 text-sm">Previous landlord references and rental payment history</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-primary mb-3">Our Process</h4>
+                                        <div class="space-y-4">
+                                            <div class="flex items-start">
+                                                <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center mr-3 mt-1 font-bold">1</div>
+                                                <div>
+                                                    <p class="font-medium text-primary">Application Review</p>
+                                                    <p class="text-gray-600 text-sm">Initial application screening and documentation collection</p>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-start">
+                                                <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center mr-3 mt-1 font-bold">2</div>
+                                                <div>
+                                                    <p class="font-medium text-primary">Background Verification</p>
+                                                    <p class="text-gray-600 text-sm">Criminal background, employment, and reference checks</p>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-start">
+                                                <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center mr-3 mt-1 font-bold">3</div>
+                                                <div>
+                                                    <p class="font-medium text-primary">Final Approval</p>
+                                                    <p class="text-gray-600 text-sm">Comprehensive evaluation and final decision</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Maintenance Accordion -->
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mr-4">
+                                    <i class="fas fa-wrench text-secondary text-xl"></i>
+                                </div>
+                                <div class="text-left">
+                                    <h3 class="text-xl font-bold text-primary">Maintenance Services</h3>
+                                    <p class="text-gray-500 text-sm mt-1">Proactive property maintenance and repairs</p>
+                                </div>
+                            </div>
+                            <div class="accordion-icon">
+                                <i class="fas fa-plus text-secondary text-xl"></i>
+                            </div>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-content-inner">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                    <div>
+                                        <h4 class="font-semibold text-primary mb-4">Regular Maintenance</h4>
+                                        <div class="space-y-4">
+                                            <div class="flex items-center p-3 bg-gray-50 rounded-lg">
+                                                <div class="w-10 h-10 bg-secondary/10 rounded-full flex items-center justify-center mr-4">
+                                                    <i class="fas fa-calendar-check text-secondary"></i>
+                                                </div>
+                                                <div>
+                                                    <p class="font-medium text-primary">Scheduled Inspections</p>
+                                                    <p class="text-gray-600 text-sm">Regular property assessments and preventive maintenance</p>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-center p-3 bg-gray-50 rounded-lg">
+                                                <div class="w-10 h-10 bg-secondary/10 rounded-full flex items-center justify-center mr-4">
+                                                    <i class="fas fa-tools text-secondary"></i>
+                                                </div>
+                                                <div>
+                                                    <p class="font-medium text-primary">24/7 Emergency Response</p>
+                                                    <p class="text-gray-600 text-sm">Immediate attention to urgent maintenance issues</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-primary mb-4">Quality Standards</h4>
+                                        <p class="text-gray-600 mb-4">We maintain the highest standards of property care through our network of vetted professionals and contractors.</p>
+                                        <div class="flex items-center space-x-4">
+                                            <div class="text-center">
+                                                <div class="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center mx-auto mb-2">
+                                                    <span class="font-bold">100%</span>
+                                                </div>
+                                                <p class="text-sm text-gray-600">Licensed Contractors</p>
+                                            </div>
+                                            <div class="text-center">
+                                                <div class="w-12 h-12 bg-secondary text-white rounded-full flex items-center justify-center mx-auto mb-2">
+                                                    <span class="font-bold">24h</span>
+                                                </div>
+                                                <p class="text-sm text-gray-600">Response Time</p>
+                                            </div>
+                                            <div class="text-center">
+                                                <div class="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center mx-auto mb-2">
+                                                    <i class="fas fa-check"></i>
+                                                </div>
+                                                <p class="text-sm text-gray-600">Quality Guarantee</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="bg-gradient-to-r from-primary to-primary/90 rounded-2xl p-10 md:p-12 text-center text-white">
+                <div class="max-w-3xl mx-auto">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">Experience Premium Property Management</h2>
+                    <p class="text-xl text-white/90 mb-8">Join the many property owners who trust Triumph Residential Services with their valuable assets</p>
+                    <div class="flex flex-col sm:flex-row gap-6 justify-center">
+                        <a href="/contact" class="px-8 py-4 bg-secondary text-white font-semibold rounded-full hover:bg-white hover:text-secondary transition-all duration-300 transform hover:-translate-y-1">
+                            <i class="fas fa-phone-alt mr-3"></i>Contact Our Team
+                        </a>
+                        <a href="tel:2132524444" class="px-8 py-4 border-2 border-white text-white font-semibold rounded-full hover:bg-white hover:text-primary transition-all duration-300">
+                            <i class="fas fa-mobile-alt mr-3"></i>Call Now: (213) 252-4444
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white mt-12">
+        <div class="max-w-7xl mx-auto px-4 py-12">
+            <div class="text-center">
+                <p class="text-white/80">© 2023 Triumph Residential Services. All rights reserved.</p>
+                <div class="mt-4 flex justify-center space-x-6">
+                    <a href="/privacy" class="text-white/80 hover:text-secondary transition-colors">Privacy Policy</a>
+                    <a href="/terms" class="text-white/80 hover:text-secondary transition-colors">Terms of Service</a>
+                    <a href="/contact" class="text-white/80 hover:text-secondary transition-colors">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Accordion functionality
+        function toggleAccordion(header) {
+            const content = header.nextElementSibling;
+            const icon = header.querySelector('.accordion-icon i');
+            
+            // Toggle active class
+            header.classList.toggle('active');
+            
+            // Toggle icon
+            if (header.classList.contains('active')) {
+                icon.classList.remove('fa-plus');
+                icon.classList.add('fa-minus');
+                content.style.maxHeight = content.scrollHeight + 'px';
+            } else {
+                icon.classList.remove('fa-minus');
+                icon.classList.add('fa-plus');
+                content.style.maxHeight = null;
+            }
+            
+            // Close other accordions
+            const allHeaders = document.querySelectorAll('.accordion-header');
+            allHeaders.forEach(otherHeader => {
+                if (otherHeader !== header && otherHeader.classList.contains('active')) {
+                    otherHeader.classList.remove('active');
+                    const otherContent = otherHeader.nextElementSibling;
+                    const otherIcon = otherHeader.querySelector('.accordion-icon i');
+                    otherIcon.classList.remove('fa-minus');
+                    otherIcon.classList.add('fa-plus');
+                    otherContent.style.maxHeight = null;
+                }
+            });
+        }
+        
+        // Initialize first accordion as open
+        document.addEventListener('DOMContentLoaded', function() {
+            const firstAccordion = document.querySelector('.accordion-header');
+            if (firstAccordion) {
+                toggleAccordion(firstAccordion);
+            }
+            
+            // Add hover effect to service cards
+            const serviceCards = document.querySelectorAll('.service-card');
+            serviceCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

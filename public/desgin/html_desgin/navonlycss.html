@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Slide Navbar Panel</title>
+
+    <!-- Animate.css CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body,
+        html {
+            height: 100%;
+        }
+
+        .container {
+            display: flex;
+            height: 100vh;
+            width: 100%;
+            position: relative;
+        }
+
+        /* Left Panel */
+        .left {
+            width: 50%;
+            padding: 25px 25px 25px 25px;
+            padding-top: 80px;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .left img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border: 4px solid #fff;
+            border-radius: 20px;
+        }
+
+        /* Right Panel */
+        .right {
+            width: 50%;
+            position: relative;
+            background: #273c4c;
+        }
+
+        .menu-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 28px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        /* Slide-in nav panel */
+        .nav-panel {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100vh;
+            /* background: #222;
+            color: #fff; */
+            background: #fff;
+            color: #273c4c;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+            padding: 40px;
+            z-index: 1000;
+        }
+
+        .nav-panel.active {
+            transform: translateY(0);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        .nav-panel .nav-content {
+            display: flex;
+            height: 100%;
+        }
+
+        .nav-panel .left_close {
+            width: 50%;
+            background: url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2073&q=80") center/cover no-repeat;
+        }
+
+        .nav-panel .right_close {
+            width: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-panel ul {
+            list-style: none;
+            text-align: center;
+        }
+
+        .nav-panel ul li {
+            margin: 20px 0;
+        }
+
+        .nav-panel ul li a {
+            text-decoration: none;
+            font-size: 24px;
+            color: #fff;
+            color: #273c4c;
+            transition: 0.3s;
+        }
+
+        .nav-panel ul li a:hover {
+            color: #00ffcc;
+        }
+
+        /* Center Links */
+        .center_div {
+            position: absolute;
+            top: 25px;
+            left: 13%;
+            transform: translateX(-50%);
+            text-align: center;
+        }
+
+        .center_div ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            padding: 0;
+            margin: 0;
+        }
+
+        .center_div ul li a {
+            text-decoration: none;
+            font-size: 20px;
+            color: #fff;
+            background: #273c4c;
+            padding: 8px 20px;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .center_div ul li a:hover {
+
+            color: #fff;
+            background: #273c4c;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="left">
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2073&q=80"
+                alt="Beach">
+        </div>
+
+        <div class="right">
+            <div class="menu-icon animate__animated animate__rotateIn animate__slow" onclick="openNav()">☰</div>
+            <section class="py-20">
+                <div class="container mx-auto px-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div
+                            class="bg-white p-8 text-center shadow-lg rounded-lg hover:-translate-y-2 transition-transform duration-300">
+                            <div class="text-red-600 text-4xl mb-4"><i class="fas fa-city"></i></div>
+                            <div class="text-5xl font-bold mb-2"><span>2167</span></div>
+                            <div class="text-gray-600 uppercase tracking-wider font-semibold">Properties</div>
+                        </div>
+                        <div
+                            class="bg-white p-8 text-center shadow-lg rounded-lg hover:-translate-y-2 transition-transform duration-300">
+                            <div class="text-red-600 text-4xl mb-4"><i class="fas fa-home"></i></div>
+                            <div class="text-5xl font-bold mb-2"><span>4000</span></div>
+                            <div class="text-gray-600 uppercase tracking-wider font-semibold">Residences</div>
+                        </div>
+                        <div
+                            class="bg-white p-8 text-center shadow-lg rounded-lg hover:-translate-y-2 transition-transform duration-300">
+                            <div class="text-red-600 text-4xl mb-4"><i class="fas fa-warehouse"></i></div>
+                            <div class="text-5xl font-bold mb-2"><span>30</span></div>
+                            <div class="text-gray-600 uppercase tracking-wider font-semibold">Buildings</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="center_div">
+            <ul>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">About Us</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Slide-in Nav Panel -->
+    <div class="nav-panel" id="navPanel">
+        <div class="close-btn" onclick="closeNav()">✖</div>
+        <div class="nav-content">
+            <div class="left_close"></div>
+            <div class="right_close">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openNav() {
+            document.getElementById("navPanel").classList.add("active");
+        }
+
+        function closeNav() {
+            document.getElementById("navPanel").classList.remove("active");
+        }
+    </script>
+</body>
+
+</html>

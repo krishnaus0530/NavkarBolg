@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Services - Triumph Real Estate</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        darkbluegray: '#323751',
+                        coral: '#e76b53',
+                    },
+                    fontFamily: {
+                        poppins: ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50 font-poppins">
+    
+    <!-- Simple Header -->
+    <nav class="bg-white shadow-sm py-4">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex items-center">
+                <div class="w-8 h-8 bg-darkbluegray rounded-lg flex items-center justify-center mr-3">
+                    <i class="fas fa-home text-white text-sm"></i>
+                </div>
+                <h1 class="text-xl font-bold text-darkbluegray">Triumph Real Estate</h1>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Property Services Cards -->
+    <section class="py-12">
+        <div class="max-w-7xl mx-auto px-4">
+            <!-- Header -->
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold text-darkbluegray mb-3">
+                    Our Property Services
+                </h2>
+                <p class="text-gray-600">
+                    Complete real estate solutions for all your needs
+                </p>
+            </div>
+
+            <!-- Services Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Property Buying -->
+                <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden border">
+                    <div class="p-5">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 bg-darkbluegray rounded-lg flex items-center justify-center mr-3">
+                                <i class="fas fa-home text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-darkbluegray">Property Buying</h3>
+                                <p class="text-xs text-gray-500">Find your dream home</p>
+                            </div>
+                        </div>
+                        
+                        <ul class="space-y-2 mb-4">
+                            <li class="flex items-center text-sm">
+                                <i class="fas fa-check text-coral mr-2 text-xs"></i>
+                                <span>Property search & selection</span>
+                            </li>
+                            <li class="flex items-center text-sm">
+                                <i class="fas fa-check text-coral mr-2 text-xs"></i>
+                                <span>Market analysis</span>
+                            </li>
+                            <li class="flex items-center text-sm">
+                                <i class="fas fa-check text-coral mr-2 text-xs"></i>
+                                <span>Negotiation support</span>
+                            </li>
+                        </ul>
+                        
+                        <a href="/propertyBuyingPage" 
+                           class="block w-full bg-darkbluegray hover:bg-coral text-white text-center py-2 rounded-lg text-sm font-medium transition duration-300">
+                            Explore Service
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Property Selling -->
+                <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden border">
+                    <div class="p-5">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 bg-darkbluegray rounded-lg flex items-center justify-center mr-3">
+                                <i class="fas fa-dollar-sign text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-darkbluegray">Property Selling</h3>
+                                <p class="text-xs text-gray-500">Maximize property value</p>
+                            </div>
+                        </div>
+                        
+                        <ul class="space-y-2 mb-4">
+                            <li class="flex items-center text-sm">
+                                <i class="fas fa-check text-coral mr-2 text-xs"></i>
+                                <span>Property valuation</span>
+                            </li>
+                            <li class="flex items-center text-sm">
+                                <i class="fas fa-check text-coral mr-2 text-xs"></i>
+                                <span>Marketing strategy</span>
+                            </li>
+                            <li class="flex items-center text-sm">
+                                <i class="fas fa-check text-coral mr-2 text-xs"></i>
+                                <span>Buyer screening</span>
+                            </li>
+                        </ul>
+                        
+                        <a href="/propertySellingPage" 
+                           class="block w-full bg-darkbluegray hover:bg-coral text-white text-center py-2 rounded-lg text-sm font-medium transition duration-300">
+                            Explore Service
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Property Management -->
+                <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden border">
+                    <div class="p-5">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 bg-darkbluegray rounded-lg flex items-center justify-center mr-3">
+                                <i class="fas fa-cogs text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-darkbluegray">Property Management</h3>
+                                <p class="text-xs text-gray-500">Complete management</p>
+                            </div>
+                        </div>
+                        
+                        <ul class="space-y-2 mb-4">
+                            <li class="flex items-center text-sm">
+                                <i class="fas fa-check text-coral mr-2 text-xs"></i>
+                                <span>Tenant management</span>
+                            </li>
+                            <li class="flex items-center text-sm">
+                                <i class="fas fa-check text-coral mr-2 text-xs"></i>
+                                <span>Maintenance services</span>
+                            </li>
+                            <li class="flex items-center text-sm">
+                                <i class="fas fa-check text-coral mr-2 text-xs"></i>
+                                <span>Rent collection</span>
+                            </li>
+                        </ul>
+                        
+                        <a href="/propertyManagement" 
+                           class="block w-full bg-darkbluegray hover:bg-coral text-white text-center py-2 rounded-lg text-sm font-medium transition duration-300">
+                            Explore Service
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Real Estate Investment -->
+                <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden border">
+                    <div class="p-5">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 bg-darkbluegray rounded-lg flex items-center justify-center mr-3">
+                                <i class="fas fa-chart-line text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-darkbluegray">Real Estate Investment</h3>
+                                <p class="text-xs text-gray-500">Strategic investments</p>
+                            </div>
+                        </div>
+                        
+                        <ul class="space-y-2 mb-4">
+                            <li class="flex items-center text-sm">
+                                <i class="fas fa-check text-coral mr-2 text-xs"></i>
+                                <span>Market analysis</span>
+                            </li>
+                            <li class="flex items-center text-sm">
+                                <i class="fas fa-check text-coral mr-2 text-xs"></i>
+                                <span>Portfolio management</span>
+                            </li>
+                            <li class="flex items-center text-sm">
+                                <i class="fas fa-check text-coral mr-2 text-xs"></i>
+                                <span>Deal sourcing</span>
+                            </li>
+                        </ul>
+                        
+                        <a href="/realEstateInvestment" 
+                           class="block w-full bg-darkbluegray hover:bg-coral text-white text-center py-2 rounded-lg text-sm font-medium transition duration-300">
+                            Explore Service
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Legal & Documentation -->
+                <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden border">
+                    <div class="p-5">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 bg-darkbluegray rounded-lg flex items-center justify-center mr-3">
+                                <i class="fas fa-file-contract text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-darkbluegray">Legal & Documentation</h3>
+                                <p class="text-xs text-gray-500">Complete legal support</p>
+                            </div>
+                        </div>
+                        
+                        <ul class="space-y-2 mb-4">
+                            <li class="flex items-center text-sm">
+                                <i class="fas fa-check text-coral mr-2 text-xs"></i>
+                                <span>Title verification</span>
+                            </li>
+                            <li class="flex items-center text-sm">
+                                <i class="fas fa-check text-coral mr-2 text-xs"></i>
+                                <span>Contract preparation</span>
+                            </li>
+                            <li class="flex items-center text-sm">
+                                <i class="fas fa-check text-coral mr-2 text-xs"></i>
+                                <span>Registration support</span>
+                            </li>
+                        </ul>
+                        
+                        <a href="/legal_Documentation" 
+                           class="block w-full bg-darkbluegray hover:bg-coral text-white text-center py-2 rounded-lg text-sm font-medium transition duration-300">
+                            Explore Service
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Consultation -->
+                <!-- <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden border">
+                    <div class="p-5">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 bg-darkbluegray rounded-lg flex items-center justify-center mr-3">
+                                <i class="fas fa-headset text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-darkbluegray">Free Consultation</h3>
+                                <p class="text-xs text-gray-500">Expert advice</p>
+                            </div>
+                        </div>
+                        
+                        <ul class="space-y-2 mb-4">
+                            <li class="flex items-center text-sm">
+                                <i class="fas fa-check text-coral mr-2 text-xs"></i>
+                                <span>30-min free consultation</span>
+                            </li>
+                            <li class="flex items-center text-sm">
+                                <i class="fas fa-check text-coral mr-2 text-xs"></i>
+                                <span>Customized solution</span>
+                            </li>
+                            <li class="flex items-center text-sm">
+                                <i class="fas fa-check text-coral mr-2 text-xs"></i>
+                                <span>No obligation</span>
+                            </li>
+                        </ul>
+                        
+                        <div class="space-y-2">
+                            <a href="#consultation" 
+                               class="block w-full bg-coral hover:bg-darkbluegray text-white text-center py-2 rounded-lg text-sm font-medium transition duration-300">
+                                Book Now
+                            </a>
+                            <button class="w-full border border-darkbluegray text-darkbluegray hover:bg-darkbluegray hover:text-white text-center py-2 rounded-lg text-sm font-medium transition duration-300">
+                                Call Now
+                            </button>
+                        </div>
+                    </div>
+                </div> -->
+
+            </div>
+
+            <!-- Simple Stats -->
+            <div class="mt-12 bg-darkbluegray rounded-xl p-6 text-white">
+                <div class="grid md:grid-cols-4 gap-6">
+                    <div class="text-center">
+                        <div class="text-2xl font-bold">5000+</div>
+                        <p class="text-sm">Properties</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl font-bold">15+</div>
+                        <p class="text-sm">Years Experience</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl font-bold">99.8%</div>
+                        <p class="text-sm">Satisfaction</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl font-bold">250+</div>
+                        <p class="text-sm">Team Members</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Simple CTA -->
+            <div class="mt-8 text-center">
+                <p class="text-lg text-darkbluegray mb-4">
+                    Need help choosing a service?
+                </p>
+                <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                    <button class="bg-coral hover:bg-darkbluegray text-white py-2 px-6 rounded-lg text-sm font-medium transition duration-300">
+                        Contact Us
+                    </button>
+                    <button class="border border-darkbluegray text-darkbluegray hover:bg-darkbluegray hover:text-white py-2 px-6 rounded-lg text-sm font-medium transition duration-300">
+                        Call: (555) 123-4567
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Simple Footer -->
+    <footer class="bg-darkbluegray text-white py-6 mt-10">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-sm">© 2023 Triumph Real Estate</p>
+            <p class="text-xs text-gray-400 mt-1">Your trusted real estate partner</p>
+        </div>
+    </footer>
+
+    <!-- Simple JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add hover effect to all cards
+            const cards = document.querySelectorAll('.bg-white.rounded-xl');
+            
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-2px)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+
+            // Simple alert for buttons
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(button => {
+                if (button.textContent === 'Call Now') {
+                    button.addEventListener('click', function() {
+                        alert('Call us at (555) 123-4567');
+                    });
+                }
+                if (button.textContent === 'Contact Us') {
+                    button.addEventListener('click', function() {
+                        alert('Thank you! Our team will contact you shortly.');
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

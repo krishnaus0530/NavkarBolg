@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Two-Panel Layout: Image & Collapsible Menu</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            overflow: hidden;
+            color: #333;
+        }
+        
+        .container {
+            display: flex;
+            height: 100vh;
+            width: 100%;
+        }
+        
+        /* Left Panel - Image Section */
+        .image-panel {
+            width: 50%;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cover-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .image-panel:hover .cover-image {
+            transform: scale(1.03);
+        }
+        
+        .image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+            color: white;
+            padding: 30px;
+            padding-top: 60px;
+        }
+        
+        .image-title {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .image-description {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 90%;
+        }
+        
+        /* Right Panel - Collapsible Menu */
+        .menu-panel {
+            width: 50%;
+            height: 100vh;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 40px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .panel-title {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            text-align: center;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(44, 62, 80, 0.1);
+        }
+        
+        /* Collapsible Menu Styles */
+        .menu-container {
+            flex-grow: 1;
+        }
+        
+        .collapsible {
+            background-color: white;
+            color: #2c3e50;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .active, .collapsible:hover {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        .collapsible:after {
+            content: '\f078';
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            font-size: 0.9rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .active:after {
+            transform: rotate(180deg);
+        }
+        
+        .content {
+            padding: 0 18px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 0 0 8px 8px;
+            margin-bottom: 10px;
+        }
+        
+        .content p {
+            padding: 20px 0;
+            line-height: 1.6;
+            color: #555;
+        }
+        
+        .content ul {
+            padding: 15px 0 15px 20px;
+        }
+        
+        .content li {
+            margin-bottom: 8px;
+            padding-left: 5px;
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding-top: 20px;
+            margin-top: 20px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .image-panel, .menu-panel {
+                width: 100%;
+                height: 50vh;
+            }
+            
+            .panel-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Left Panel with Full-Cover Image -->
+        <div class="image-panel">
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2073&q=80" alt="Tropical Beach" class="cover-image">
+            <div class="image-overlay">
+                <h1 class="image-title">Beautiful Tropical Paradise</h1>
+                <p class="image-description">Experience the serenity of crystal clear waters and white sandy beaches. A perfect getaway from the hustle and bustle of daily life.</p>
+            </div>
+        </div>
+        
+        <!-- Right Panel with Collapsible Menu -->
+        <div class="menu-panel">
+            <h2 class="panel-title">Travel Information Menu</h2>
+            
+            <div class="menu-container">
+                <!-- Collapsible Menu Items -->
+                <button type="button" class="collapsible">Destination Details</button>
+                <div class="content">
+                    <p>This tropical island offers a variety of experiences for all types of travelers:</p>
+                    <ul>
+                        <li>White sandy beaches stretching over 5km</li>
+                        <li>Crystal clear waters perfect for snorkeling</li>
+                        <li>Lush rainforests with hiking trails</li>
+                        <li>Local culture and village tours</li>
+                        <li>Water sports including kayaking and paddleboarding</li>
+                    </ul>
+                </div>
+                
+                <button type="button" class="collapsible">Travel Packages</button>
+                <div class="content">
+                    <p>We offer several all-inclusive packages tailored to your needs:</p>
+                    <ul>
+                        <li><strong>Basic Package:</strong> 5 days/4 nights with breakfast included</li>
+                        <li><strong>Premium Package:</strong> 7 days/6 nights with all meals and 2 excursions</li>
+                        <li><strong>Luxury Package:</strong> 10 days/9 nights in premium villas with private pool</li>
+                        <li><strong>Adventure Package:</strong> Includes diving, hiking, and cultural experiences</li>
+                    </ul>
+                </div>
+                
+                <button type="button" class="collapsible">Booking Information</button>
+                <div class="content">
+                    <p>To book your dream vacation, follow these steps:</p>
+                    <ul>
+                        <li>Select your preferred travel dates</li>
+                        <li>Choose from available packages</li>
+                        <li>Provide traveler information</li>
+                        <li>Make a 30% deposit to secure your booking</li>
+                        <li>Full payment is required 30 days before travel</li>
+                    </ul>
+                    <p>Our cancellation policy allows full refund up to 60 days before travel date.</p>
+                </div>
+                
+                <button type="button" class="collapsible">What to Bring</button>
+                <div class="content">
+                    <p>Essential items to pack for your tropical getaway:</p>
+                    <ul>
+                        <li>Lightweight clothing and swimwear</li>
+                        <li>Sun protection (sunscreen, hat, sunglasses)</li>
+                        <li>Comfortable walking shoes for excursions</li>
+                        <li>Underwater camera for snorkeling</li>
+                        <li>Travel adapters and necessary medications</li>
+                        <li>Beach bag and reading materials</li>
+                    </ul>
+                </div>
+                
+                <button type="button" class="collapsible">Local Cuisine</button>
+                <div class="content">
+                    <p>Don't miss out on these local delicacies:</p>
+                    <ul>
+                        <li><strong>Fresh seafood:</strong> Daily catch prepared in traditional style</li>
+                        <li><strong>Tropical fruits:</strong> Mango, pineapple, papaya, and exotic varieties</li>
+                        <li><strong>Local specialties:</strong> Coconut-based dishes and grilled meats</li>
+                        <li><strong>Street food:</strong> Experience the local food markets</li>
+                    </ul>
+                    <p>We can accommodate dietary restrictions with advance notice.</p>
+                </div>
+            </div>
+            
+            <div class="footer">
+                <p>© 2023 Tropical Getaways | All information is subject to change</p>
+                <p>Contact: info@tropicalgetaways.com | Phone: +1-800-555-1234</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Collapsible menu functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const collapsibles = document.getElementsByClassName("collapsible");
+            
+            // Initialize first collapsible as open
+            if (collapsibles.length > 0) {
+                collapsibles[0].classList.add("active");
+                const firstContent = collapsibles[0].nextElementSibling;
+                firstContent.style.maxHeight = firstContent.scrollHeight + "px";
+            }
+            
+            // Add click event to all collapsibles
+            for (let i = 0; i < collapsibles.length; i++) {
+                collapsibles[i].addEventListener("click", function() {
+                    this.classList.toggle("active");
+                    const content = this.nextElementSibling;
+                    
+                    if (content.style.maxHeight) {
+                        content.style.maxHeight = null;
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    }
+                });
+            }
+            
+            // Add some interactive effects to the image
+            const coverImage = document.querySelector('.cover-image');
+            coverImage.addEventListener('load', function() {
+                this.style.opacity = '1';
+            });
+        });
+    </script>
+</body>
+</html>

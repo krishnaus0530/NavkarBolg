@@ -1,0 +1,118 @@
+
+        /* Custom styles for transitions and sidebar behavior */
+        * {
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+        
+        /* Custom styles for sidebar */
+        .sidebar-collapsed .sidebar-text,
+        .sidebar-collapsed .logo-text,
+        .sidebar-collapsed .user-info {
+            display: none !important;
+        }
+        
+        .sidebar-collapsed .sidebar-item {
+            justify-content: center !important;
+            padding-left: 0 !important;
+        }
+        
+        .sidebar-collapsed .sidebar-icon {
+            margin-right: 0 !important;
+        }
+        .sidebar-collapsed #sidebar {
+            width: 70px;
+        }
+        
+        .sidebar-collapsed .sidebar-text,
+        .sidebar-collapsed .logo-text {
+            display: none;
+        }
+        
+        
+        .sidebar-collapsed .sidebar-item {
+            justify-content: center;
+            padding-left: 0;
+        }
+        
+        .sidebar-collapsed .user-info {
+            display: none;
+        }
+        
+        .sidebar-collapsed .sidebar-icon {
+            margin-right: 0;
+        }
+        
+        @media (max-width: 768px) {
+            #sidebar {
+                transform: translateX(-100%);
+                position: fixed;
+                z-index: 40;
+                height: 100vh;
+            }
+            
+            .sidebar-collapsed #sidebar {
+                transform: translateX(0);
+                width: 250px;
+            }
+            
+            .sidebar-collapsed .main-content {
+                margin-left: 0;
+            }
+            
+            .mobile-overlay {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: rgba(0, 0, 0, 0.5);
+                z-index: 30;
+            }
+            
+            .sidebar-collapsed .mobile-overlay {
+                display: block;
+            }
+        }
+        
+        /* Dark mode specific styles */
+        .dark .bg-gray-100 {
+            background-color: #1f2937;
+        }
+        
+        .dark .bg-white {
+            background-color: #111827;
+        }
+        
+        .dark .text-gray-800 {
+            color: #f9fafb;
+        }
+        
+        .dark .text-gray-700 {
+            color: #e5e7eb;
+        }
+        
+        .dark .text-gray-600 {
+            color: #d1d5db;
+        }
+        
+        .dark .border-gray-200 {
+            border-color: #374151;
+        }
+        
+        .dark .bg-blue-50 {
+            background-color: #1e3a8a;
+        }
+        
+        .dark .bg-green-50 {
+            background-color: #064e3b;
+        }
+        
+        .dark .bg-purple-50 {
+            background-color: #5b21b6;
+        }
+        
+        .dark .bg-yellow-50 {
+            background-color: #854d0e;
+        }
+    

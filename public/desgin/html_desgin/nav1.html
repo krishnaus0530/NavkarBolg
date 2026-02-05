@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Full Page with Navbar, Image & Cards</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <style>
+        /* Slide-in nav panel from bottom */
+        .nav-panel {
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* adjust height as needed */
+            border-top-left-radius: 1rem;
+            border-top-right-radius: 1rem;
+            z-index: 50;
+        }
+
+        .nav-panel.active {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body class="overflow-x-hidden">
+
+    <!-- Hero Section with Overlay Navbar -->
+    <section class="w-full h-screen relative flex justify-center items-center">
+
+        <!-- Hero Image as background with rounded corners -->
+        <div class="w-full h-full overflow-hidden p-10">
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2073&q=80"
+                alt="Beach" class="w-full h-full object-cover rounded-xl">
+        </div>
+
+        <!-- Overlay Navbar Buttons -->
+        <div class="fixed top-0 left-0 w-full flex justify-end items-center p-20 z-20">
+
+            <!-- Right: Buttons -->
+            <!-- <div class="flex gap-4 transform-gpu
+         transition-all duration-1000 ease-out" data-aos="zoom-in" data-aos-duration="1200"
+                data-aos-easing="ease-out-cubic">
+                <button
+                    class="bg-[#273c4c] text-white px-4 py-2 rounded-lg hover:bg-[#1f2c38] transition">Services</button>
+                <button
+                    class="bg-[#273c4c] text-white px-4 py-2 rounded-lg hover:bg-[#1f2c38] transition">Contact</button>
+                <button
+                    class="bg-[#273c4c] text-white px-4 py-2 rounded-lg hover:bg-[#1f2c38] transition">About</button>
+            </div> -->
+
+            <!-- Left: Menu Icon -->
+            <div class="text-white bg-red-600 w-12 h-12 flex items-center justify-center rounded-full cursor-pointer shadow-lg 
+           transform-gpu transition-all duration-1000 ease-out hover:bg-red-700" data-aos="zoom-in"
+                data-aos-duration="1200" data-aos-easing="ease-out-cubic" onclick="openNav()">
+                ☰
+            </div>
+        </div>
+
+        <!-- Overlay Text -->
+        <div class="absolute inset-0 flex items-center justify-center z-15">
+            <div class="w-[80%] text-center pt-14 pb-14 rounded-3xl shadow-2xl border border-white/30  transform-gpu
+         transition-all duration-1000 ease-out" data-aos="zoom-in" data-aos-duration="1200"
+                data-aos-easing="ease-out-cubic">
+
+                <!-- Heading -->
+                <h2 class="text-5xl font-extrabold text-white leading-tight mb-6">
+                    Triumph
+                    <span class="block text-red-400">
+                        Residential Services
+                    </span>
+                </h2>
+
+                <!-- Description -->
+                <p class="text-[#273c4c] text-lg font-extrabold leading-relaxed mb-10">
+                    Find your perfect home in the heart of the city with our affordable apartments for rent in Los
+                    Angeles, designed to fit your lifestyle and budget while offering comfort, convenience, and
+                    exceptional service. Explore our listings today!
+                </p>
+
+                <!-- Buttons -->
+                <div class="flex justify-center gap-6">
+                    <button
+                        class="bg-red-500 hover:bg-red-600 text-white px-8 py-3 rounded-full font-semibold transition shadow-lg">
+                        View Listings
+                    </button>
+
+                    <button
+                        class="border border-white text-white px-8 py-3 rounded-full hover:bg-white hover:text-black transition">
+                        Contact Us
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+
+    </section>
+
+    <!-- <section class="py-20 bg-gradient-to-r from-[#1f2a33] to-[#273c4c]"> -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4 mt-6">
+            <div class="grid grid-cols-1 gap-12 md:gap-12">
+
+                <!-- Properties Card -->
+                <div class="flex flex-col md:flex-row items-center md:items-start gap-6">
+                    <div data-aos="fade-right" data-aos-duration="1200" data-aos-easing="ease-out-cubic"
+                        class="md:w-1/2 text-white bg-[#273c4c] p-4 rounded-xl leading-relaxed">
+                        Explore our wide range of residential and commercial properties available for sale and rent
+                        in prime locations. Whether you’re looking for a cozy apartment or a large office space, we
+                        have options to suit every need and budget.
+                    </div>
+
+                    <div data-aos="fade-left" data-aos-duration="1200" data-aos-easing="ease-out-cubic"
+                        class="cursor-pointer md:w-1/2 bg-white p-4 text-center shadow-xl rounded-xl transform transition-all duration-500 ease-out hover:-translate-y-3 hover:shadow-2xl">
+                        <div class="text-5xl bg-clip-text text-transparent bg-gradient-to-r from-red-500 to-pink-500">
+                            <i class="fas fa-city"></i>
+                        </div>
+                        <div
+                            class="text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-red-500 to-pink-500">
+                            2167
+                        </div>
+                        <div class="text-gray-600 uppercase tracking-wider font-semibold">Properties</div>
+                    </div>
+                </div>
+
+                <!-- Residences Card -->
+                <div class="flex flex-col md:flex-row items-center md:items-start gap-6">
+                    <div data-aos="fade-right" data-aos-duration="1200" data-aos-easing="ease-out-cubic"
+                        class="cursor-pointer md:w-1/2 bg-white p-4 text-center shadow-xl rounded-xl transform transition-all duration-500 ease-out hover:-translate-y-3 hover:shadow-2xl order-2 md:order-1">
+                        <div class="text-5xl bg-clip-text text-transparent bg-gradient-to-r from-red-500 to-pink-500">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <div
+                            class="text-5xl font-extrabold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-red-500 to-pink-500">
+                            4000
+                        </div>
+                        <div class="text-gray-600 uppercase tracking-wider font-semibold">Residences</div>
+                    </div>
+
+                    <div data-aos="fade-left" data-aos-duration="1200" data-aos-easing="ease-out-cubic"
+                        class="md:w-1/2 text-white bg-[#273c4c] p-4 rounded-xl order-1 md:order-2 leading-relaxed">
+                        Our residences combine luxury, comfort, and affordability. From modern apartments to family
+                        homes, every property is designed to enhance your lifestyle, with easy access to schools,
+                        shopping, and entertainment.
+                    </div>
+                </div>
+
+                <!-- Buildings Card -->
+                <div class="flex flex-col md:flex-row items-center md:items-start gap-6">
+                    <div data-aos="fade-right" data-aos-duration="1200" data-aos-easing="ease-out-cubic"
+                        class="md:w-1/2 text-white bg-[#273c4c] p-4 rounded-xl leading-relaxed">
+                        Modern commercial and industrial buildings ready for investment, lease, or expansion. Our
+                        portfolio includes warehouses, factories, and office buildings strategically located in
+                        high-demand areas for maximum growth potential.
+                    </div>
+
+                    <div data-aos="fade-left" data-aos-duration="1200" data-aos-easing="ease-out-cubic"
+                        class="cursor-pointer md:w-1/2 bg-white p-4 text-center shadow-xl rounded-xl transform transition-all duration-500 ease-out hover:-translate-y-3 hover:shadow-2xl">
+                        <div class="text-5xl bg-clip-text text-transparent bg-gradient-to-r from-red-500 to-pink-500">
+                            <i class="fas fa-warehouse"></i>
+                        </div>
+                        <div
+                            class="text-5xl font-extrabold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-red-500 to-pink-500">
+                            30
+                        </div>
+                        <div class="text-gray-600 uppercase tracking-wider font-semibold">Buildings</div>
+                    </div>
+                </div>
+
+                <!-- Agents Card -->
+                <div class="flex flex-col md:flex-row items-center md:items-start gap-6">
+                    <div data-aos="fade-right" data-aos-duration="1200" data-aos-easing="ease-out-cubic"
+                        class="md:w-1/2 bg-white p-4 text-center shadow-xl rounded-xl transform transition-all duration-500 ease-out hover:-translate-y-3 hover:shadow-2xl order-2 md:order-1">
+                        <div class="text-5xl bg-clip-text text-transparent bg-gradient-to-r from-red-500 to-pink-500">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div
+                            class="text-5xl font-extrabold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-red-500 to-pink-500">
+                            85
+                        </div>
+                        <div class="text-gray-600 uppercase tracking-wider font-semibold">Agents</div>
+                    </div>
+
+                    <div data-aos="fade-left" data-aos-duration="1200" data-aos-easing="ease-out-cubic"
+                        class="md:w-1/2 text-white bg-[#273c4c] p-4 rounded-xl order-1 md:order-2 leading-relaxed">
+                        Our team of experienced real estate agents is dedicated to helping you find the perfect
+                        property. With in-depth market knowledge, personalized guidance, and professional support,
+                        we ensure a smooth and successful buying, selling, or renting experience.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="technology" class="py-10">
+        <div class="container mx-auto px-4 transform-gpu
+         transition-all duration-1000 ease-out" data-aos="flip-left" data-aos-duration="1200"
+            data-aos-easing="ease-out-cubic">
+            <div class="text-center mb-12">
+                <div class="text-red-600 md:text-3xl font-semibold uppercase tracking-wider mb-2">Our Services</div>
+                <h2 class="text-2xl md:text-2xl font-medium mb-4">We strive to provide a consistent level of service
+                    across our portfolio of affordable apartments for rent in Los Angeles while personalizing our
+                    approach for each community.</h2>
+            </div>
+            <div class="flex flex-col lg:flex-row items-stretch gap-12 mb-3">
+                <div class="lg:w-1/2 bg-gray-200 p-5 flex flex-col">
+                    <div class="flex justify-end text-gray-900 text-5xl mb-4"><i class="fas fa-building"></i></div>
+                    <p class="font-bold mb-4">PROPERTY OPERATIONS</p>
+                    <p class="text-lg mb-6">Our Management approach allows us to recognize operational efficiencies</p>
+                    <!-- Wrap button in a div to control width -->
+                    <div class="mt-auto self-start">
+                        <a class="inline-flex items-center bg-red-600 text-white px-6 py-3 font-semibold uppercase tracking-wide hover:bg-red-700 transition-all duration-300"
+                            href="http://127.0.0.1:8000/property">Learn More<i class="fas fa-arrow-right ml-2"></i></a>
+                    </div>
+                </div>
+
+                <div class="lg:w-1/2 bg-gray-200 p-5 flex flex-col">
+                    <div class="flex justify-end text-gray-900 text-5xl mb-4"><i class="fas fa-scale-balanced"></i>
+                    </div>
+                    <p class="font-bold mb-4">REGULATORY COMPLIANCE</p>
+                    <p class="text-lg mb-6">We are familiar with requirements from the various Federal, State and City
+                        agencies and their administrators</p>
+                    <!-- Wrap button in a div to control width -->
+                    <div class="mt-auto self-start">
+                        <a class="inline-flex items-center bg-red-600 text-white px-6 py-3 font-semibold uppercase tracking-wide hover:bg-red-700 transition-all duration-300"
+                            href="http://127.0.0.1:8000/regulatory">Learn More<i
+                                class="fas fa-arrow-right ml-2"></i></a>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+
+    <section id="solutions" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <div class="text-red-600 font-semibold uppercase tracking-wider mb-2">Blogs</div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:-translate-y-2 transition-transform duration-300 transform-gpu
+         transition-all duration-1000 ease-out" data-aos="fade-right" data-aos-duration="1200"
+                    data-aos-easing="ease-out-cubic">
+                    <div class="h-64 overflow-hidden"><img
+                            src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=1758&amp;q=80"
+                            alt="Utility Pods - Kitchen Pods"
+                            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3">Utility Pods - Kitchen Pods</h3>
+                        <p class="text-gray-600">Factory-finished kitchen pods with integrated services and appliances.
+                        </p>
+                    </div>
+                    <div class="p-6"><a
+                            class="inline-flex items-center bg-red-600 text-white px-6 py-3 font-semibold uppercase tracking-wide hover:bg-red-700 transition-all duration-300"
+                            href="">View More<i class="fas fa-arrow-right ml-2"></i></a></div>
+                </div>
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:-translate-y-2 transition-transform duration-300 transform-gpu
+         transition-all duration-1000 ease-out" data-aos="fade-down" data-aos-duration="1200"
+                    data-aos-easing="ease-out-cubic">
+                    <div class="h-64 overflow-hidden"><img
+                            src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=1770&amp;q=80"
+                            alt="Utility Pods - Bathroom Pods"
+                            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3">Utility Pods - Bathroom Pods</h3>
+                        <p class="text-gray-600">Complete bathroom units factory-built with all plumbing and fixtures
+                            installed.</p>
+                    </div>
+                    <div class="p-6"><a
+                            class="inline-flex items-center bg-red-600 text-white px-6 py-3 font-semibold uppercase tracking-wide hover:bg-red-700 transition-all duration-300"
+                            href="">View More<i class="fas fa-arrow-right ml-2"></i></a></div>
+                </div>
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:-translate-y-2 transition-transform duration-300 transform-gpu
+         transition-all duration-1000 ease-out" data-aos="fade-left" data-aos-duration="1200"
+                    data-aos-easing="ease-out-cubic">
+                    <div class="h-64 overflow-hidden"><img
+                            src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=1673&amp;q=80"
+                            alt="Retail Pods"
+                            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3">Retail Pods</h3>
+                        <p class="text-gray-600">Modular retail spaces that can be quickly deployed and relocated as
+                            needed.</p>
+                    </div>
+                    <div class="p-6"><a
+                            class="inline-flex items-center bg-red-600 text-white px-6 py-3 font-semibold uppercase tracking-wide hover:bg-red-700 transition-all duration-300"
+                            href="">View More<i class="fas fa-arrow-right ml-2"></i></a></div>
+                </div>
+            </div>
+            <div class="text-center transform-gpu
+         transition-all duration-1000 ease-out" data-aos="zoom-out" data-aos-duration="800"
+                data-aos-easing="ease-out-cubic"><a
+                    class="inline-flex items-center border border-red-600 text-red-600 px-8 py-3 font-semibold uppercase tracking-wide hover:bg-red-600 hover:text-white transition-all duration-300"
+                    href="">View All Blogs<i class="fas fa-arrow-right ml-2"></i></a></div>
+        </div>
+    </section>
+    <section id="use-cases">
+        <section class="py-16 bg-gray-100">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="space-y-4 text-center mb-10" data-aos="fade-down" data-aos-duration="1000">
+                    <h2 class="text-3xl font-bold">FAQ</h2>
+                    <h5 class="text-gray-600">Most frequent questions and answers</h5>
+                </div>
+                <div class="space-y-4">
+                    <details
+                        class="group border-s-4 border-gray-900 bg-gray-400 p-4 sm:p-6 [&_summary::-webkit-details-marker]:hidden"
+                        data-aos="fade-up" data-aos-duration="800" data-aos-delay="0">
+                        <summary class="flex items-center justify-between gap-2 text-gray-900 cursor-pointer">
+                            <h3 class="text-white sm:text-lg font-medium text-left">WHAT SERVICES DOES TRIUMPH
+                                RESIDENTIAL OFFER?</h3>
+                            <svg class="size-5 shrink-0 transition-transform duration-300 text-white group-open:-rotate-180"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </summary>
+                        <p class="pt-4 text-red-800 text-sm sm:text-base text-left">
+                            Triumph Residential Services is a Property Management Company in Los Angeles, with around 40
+                            affordable properties listed for rent.
+                        </p>
+                    </details>
+
+                    <details
+                        class="group border-s-4 border-gray-900 bg-gray-400 p-4 sm:p-6 [&_summary::-webkit-details-marker]:hidden"
+                        data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+                        <summary class="flex items-center justify-between gap-2 text-gray-900 cursor-pointer">
+                            <h3 class="text-white sm:text-lg font-medium text-left">WHAT IS THE PROCESS FOR RENTING A
+                                CONVENTIONAL APARTMENT THROUGH YOUR COMPANY?</h3>
+                            <svg class="size-5 shrink-0 transition-transform duration-300 text-white group-open:-rotate-180"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </summary>
+                        <p class="pt-4 text-red-800 text-sm sm:text-base text-left">
+                            First connect to our Leasing Team to schedule a visit. Then fill out an application form for
+                            further proceedings.
+                        </p>
+                    </details>
+
+                    <details
+                        class="group border-s-4 border-gray-900 bg-gray-400 p-4 sm:p-6 [&_summary::-webkit-details-marker]:hidden"
+                        data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+                        <summary class="flex items-center justify-between gap-2 text-gray-900 cursor-pointer">
+                            <h3 class="text-white sm:text-lg font-medium text-left">HOW DO YOU HANDLE MAINTENANCE
+                                REQUESTS FOR THE PROPERTIES YOU MANAGE?</h3>
+                            <svg class="size-5 shrink-0 transition-transform duration-300 text-white group-open:-rotate-180"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </summary>
+                        <p class="pt-4 text-red-800 text-sm sm:text-base text-left">
+                            We have a dedicated maintenance team that handles all property-related issues promptly.
+                        </p>
+                    </details>
+
+                    <details
+                        class="group border-s-4 border-gray-900 bg-gray-400 p-4 sm:p-6 [&_summary::-webkit-details-marker]:hidden"
+                        data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
+                        <summary class="flex items-center justify-between gap-2 text-gray-900 cursor-pointer">
+                            <h3 class="text-white sm:text-lg font-medium text-left">CAN I RENEW MY LEASE?</h3>
+                            <svg class="size-5 shrink-0 transition-transform duration-300 text-white group-open:-rotate-180"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </summary>
+                        <p class="pt-4 text-red-800 text-sm sm:text-base text-left">
+                            Yes, contact the respective Property Manager available at the property.
+                        </p>
+                    </details>
+
+                    <details
+                        class="group border-s-4 border-gray-900 bg-gray-400 p-4 sm:p-6 [&_summary::-webkit-details-marker]:hidden"
+                        data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
+                        <summary class="flex items-center justify-between gap-2 text-gray-900 cursor-pointer">
+                            <h3 class="text-white sm:text-lg font-medium text-left">ARE PETS ALLOWED IN YOUR
+                                CONVENTIONAL APARTMENTS FOR RENT IN LOS ANGELES?</h3>
+                            <svg class="size-5 shrink-0 transition-transform duration-300 text-white group-open:-rotate-180"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </summary>
+                        <p class="pt-4 text-red-800 text-sm sm:text-base text-left">
+                            Only Emotional Support and Service Animals are allowed after document verification.
+                        </p>
+                    </details>
+
+                    <details
+                        class="group border-s-4 border-gray-900 bg-gray-400 p-4 sm:p-6 [&_summary::-webkit-details-marker]:hidden"
+                        data-aos="fade-up" data-aos-duration="800" data-aos-delay="500">
+                        <summary class="flex items-center justify-between gap-2 text-gray-900 cursor-pointer">
+                            <h3 class="text-white sm:text-lg font-medium text-left">HOW DO YOU SCREEN POTENTIAL TENANTS?
+                            </h3>
+                            <svg class="size-5 shrink-0 transition-transform duration-300 text-white group-open:-rotate-180"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </summary>
+                        <p class="pt-4 text-red-800 text-sm sm:text-base text-left">
+                            We perform a thorough screening to select responsible tenants who meet financial obligations
+                            and care for the property.
+                        </p>
+                    </details>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <footer id="contact" class="bg-[#273c4c] text-white pt-20 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="0">
+                    <h3 class="text-lg font-semibold mb-6 pb-2 border-b-2 border-red-600 inline-block">Quick Links</h3>
+                    <div class="flex flex-col gap-3">
+                        <a class="text-gray-400 hover:text-white transition-colors" href="">About Us</a>
+                        <a class="text-gray-400 hover:text-white transition-colors" href="">Investor Relations</a>
+                        <a class="text-gray-400 hover:text-white transition-colors" href="">Technology</a>
+                        <a class="text-gray-400 hover:text-white transition-colors" href="">Solutions</a>
+                        <a class="text-gray-400 hover:text-white transition-colors" href="">Contact</a>
+                    </div>
+                </div>
+
+                <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+                    <h3 class="text-lg font-semibold mb-6 pb-2 border-b-2 border-red-600 inline-block">Contact Us</h3>
+                    <div class="flex flex-col gap-3">
+                        <a href="tel:(213) 252-4444" class="text-gray-400 hover:text-white transition-colors">(213)
+                            252-4444</a>
+                        <a href="info@triumphresidential.com"
+                            class="text-gray-400 hover:text-white transition-colors">info@triumphresidential.com</a>
+                    </div>
+                </div>
+
+                <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                    <h3 class="text-lg font-semibold mb-6 pb-2 border-b-2 border-red-600 inline-block">Head Office</h3>
+                    <p class="text-gray-400 mb-6">631 S Olive St Suite 600, Los Angeles, CA 90014</p>
+                    <div class="flex flex-col gap-2">
+                        <p class="text-gray-400">631 S Olive St Suite 600, Los Angeles, CA 90014</p>
+                        <a href="tel:+912111299200" class="text-gray-400 hover:text-white transition-colors">(213)
+                            252-4444</a>
+                        <a href="info@triumphresidential.com"
+                            class="text-gray-400 hover:text-white transition-colors">info@triumphresidential.com</a>
+                    </div>
+                </div>
+
+                <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+                    <h3 class="text-lg font-semibold mb-6 pb-2 border-b-2 border-red-600 inline-block">Follow Us</h3>
+                    <p class="text-gray-400 mb-6">Stay updated with our latest projects and innovations.</p>
+                    <div class="flex gap-4">
+                        <a href="#"
+                            class="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full hover:bg-red-600 hover:-translate-y-1 transition-all duration-300"><i
+                                class="fab fa-linkedin-in"></i></a>
+                        <a href="#"
+                            class="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full hover:bg-red-600 hover:-translate-y-1 transition-all duration-300"><i
+                                class="fab fa-twitter"></i></a>
+                        <a href="#"
+                            class="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full hover:bg-red-600 hover:-translate-y-1 transition-all duration-300"><i
+                                class="fab fa-youtube"></i></a>
+                        <a href="#"
+                            class="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full hover:bg-red-600 hover:-translate-y-1 transition-all duration-300"><i
+                                class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 pt-8 text-center" data-aos="fade-up" data-aos-duration="1000"
+                data-aos-delay="400">
+                <p class="text-gray-500 mb-4">© Copyright 2022 | Triumph Residential Services Inc | Website Developed By
+                    NBS | All Rights Reserved</p>
+                <p class="text-gray-500 mb-6 max-w-3xl mx-auto">Triumph Residential is an incubation by Red Ribbon Asset
+                    Management Plc, a Mainstream Impact Investment company following the principles of the "Triple P
+                    Bottom Line" of Planet, People and Profit.</p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a class="text-gray-500 hover:text-white transition-colors" href="">Privacy Policy</a>
+                    <a class="text-gray-500 hover:text-white transition-colors" href="">Cookie Policy</a>
+                    <a class="text-gray-500 hover:text-white transition-colors" href="">Terms & Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Slide-in Bottom Nav Panel -->
+    <div class="fixed inset-x-0 bottom-0 z-50 nav-panel bg-white shadow-lg rounded-t-xl">
+        <div class="absolute top-5 right-5 text-3xl cursor-pointer" onclick="closeNav()">✖</div>
+        <div class="flex flex-col h-full justify-center items-center gap-8">
+            <a href="#" class="text-[#273c4c] text-2xl hover:text-teal-400 transition">Home</a>
+            <a href="#" class="text-[#273c4c] text-2xl hover:text-teal-400 transition">About</a>
+            <a href="#" class="text-[#273c4c] text-2xl hover:text-teal-400 transition">Services</a>
+            <a href="#" class="text-[#273c4c] text-2xl hover:text-teal-400 transition">Contact</a>
+        </div>
+    </div>
+
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+    <script>
+        AOS.init({
+            once: false,
+            offset: 120,
+            duration: 1200,
+            easing: 'ease-out-cubic'
+        });
+    </script>
+
+    <script>
+        AOS.init();
+
+        function openNav() {
+            document.querySelector('.nav-panel').classList.add('active');
+        }
+
+        function closeNav() {
+            document.querySelector('.nav-panel').classList.remove('active');
+        }
+    </script>
+
+</body>
+
+</html>

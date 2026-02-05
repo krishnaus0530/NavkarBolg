@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Get In Touch</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .form-input:focus {
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+        }
+        
+        .success-message {
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+        
+        .success-message.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header Section -->
+    <header class="bg-white shadow-sm">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-envelope text-white text-xl"></i>
+                    </div>
+                    <h1 class="text-2xl font-bold text-gray-800">Contact Us</h1>
+                </div>
+                <div class="hidden md:flex space-x-6">
+                    <a href="#" class="text-gray-600 hover:text-blue-600 transition">Home</a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600 transition">About</a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600 transition">Services</a>
+                    <a href="#" class="text-blue-600 font-medium">Contact</a>
+                </div>
+                <button class="md:hidden text-gray-700">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8 md:py-12">
+        <div class="text-center mb-10 md:mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Get In Touch With Us</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">Have questions, suggestions, or need support? Fill out the form below and we'll get back to you as soon as possible.</p>
+        </div>
+        
+        <div class="flex flex-col lg:flex-row gap-10">
+            <!-- Contact Form -->
+            <div class="lg:w-2/3">
+                <div class="bg-white rounded-xl shadow-lg p-6 md:p-8">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Send us a message</h3>
+                    
+                    <!-- Success Message (Hidden by default) -->
+                    <div id="successMessage" class="success-message bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-lg mb-6">
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                            <p class="font-medium">Thank you! Your message has been sent successfully.</p>
+                        </div>
+                    </div>
+                    
+                    <form id="contactForm">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <!-- First Name -->
+                            <div>
+                                <label for="firstName" class="block text-gray-700 font-medium mb-2">First Name <span class="text-red-500">*</span></label>
+                                <div class="relative">
+                                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                        <i class="fas fa-user text-gray-400"></i>
+                                    </div>
+                                    <input type="text" id="firstName" required class="form-input w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" placeholder="Enter your first name">
+                                </div>
+                                <p class="text-red-500 text-sm mt-1 hidden" id="firstNameError">Please enter your first name</p>
+                            </div>
+                            
+                            <!-- Last Name -->
+                            <div>
+                                <label for="lastName" class="block text-gray-700 font-medium mb-2">Last Name <span class="text-red-500">*</span></label>
+                                <div class="relative">
+                                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                        <i class="fas fa-user text-gray-400"></i>
+                                    </div>
+                                    <input type="text" id="lastName" required class="form-input w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" placeholder="Enter your last name">
+                                </div>
+                                <p class="text-red-500 text-sm mt-1 hidden" id="lastNameError">Please enter your last name</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Email -->
+                        <div class="mb-6">
+                            <label for="email" class="block text-gray-700 font-medium mb-2">Email Address <span class="text-red-500">*</span></label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <i class="fas fa-envelope text-gray-400"></i>
+                                </div>
+                                <input type="email" id="email" required class="form-input w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" placeholder="Enter your email address">
+                            </div>
+                            <p class="text-red-500 text-sm mt-1 hidden" id="emailError">Please enter a valid email address</p>
+                        </div>
+                        
+                        <!-- Phone -->
+                        <div class="mb-6">
+                            <label for="phone" class="block text-gray-700 font-medium mb-2">Phone Number</label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <i class="fas fa-phone text-gray-400"></i>
+                                </div>
+                                <input type="tel" id="phone" class="form-input w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" placeholder="Enter your phone number">
+                            </div>
+                        </div>
+                        
+                        <!-- Intrested Property -->
+                        <div class="mb-6">
+                            <label for="subject" class="block text-gray-700 font-medium mb-2">Intrested Property <span class="text-red-500">*</span></label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <i class="fas fa-tag text-gray-400"></i>
+                                </div>
+                                <input type="text" id="subject" required class="form-input w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" placeholder="Intrested Property">
+                            </div>
+                            <p class="text-red-500 text-sm mt-1 hidden" id="subjectError">Please enter a Intrested Property</p>
+                        </div>
+                        
+                        <!-- Subject -->
+                        <div class="mb-6">
+                            <label for="subject" class="block text-gray-700 font-medium mb-2">Subject <span class="text-red-500">*</span></label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <i class="fas fa-tag text-gray-400"></i>
+                                </div>
+                                <input type="text" id="subject" required class="form-input w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" placeholder="What is this regarding?">
+                            </div>
+                            <p class="text-red-500 text-sm mt-1 hidden" id="subjectError">Please enter a subject</p>
+                        </div>
+                        
+                        <!-- Message -->
+                        <div class="mb-6">
+                            <label for="message" class="block text-gray-700 font-medium mb-2">Message <span class="text-red-500">*</span></label>
+                            <div class="relative">
+                                <div class="absolute top-3 left-3 pointer-events-none">
+                                    <i class="fas fa-comment text-gray-400"></i>
+                                </div>
+                                <textarea id="message" rows="5" required class="form-input w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" placeholder="Please type your message here..."></textarea>
+                            </div>
+                            <p class="text-red-500 text-sm mt-1 hidden" id="messageError">Please enter your message</p>
+                        </div>
+                        
+                        <!-- Submit Button -->
+                        <div class="flex items-center justify-between">
+                            <div class="text-sm text-gray-600">
+                                <p>Fields marked with <span class="text-red-500">*</span> are required</p>
+                            </div>
+                            <button type="submit" id="submitBtn" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-8 rounded-lg transition duration-300 flex items-center">
+                                <i class="fas fa-paper-plane mr-2"></i>
+                                Send Message
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p>&copy; 2023 Contact Us. All rights reserved.</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="hover:text-blue-300 transition">Privacy Policy</a>
+                    <a href="#" class="hover:text-blue-300 transition">Terms of Service</a>
+                    <a href="#" class="hover:text-blue-300 transition">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Form validation and submission handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Reset error messages
+            document.querySelectorAll('[id$="Error"]').forEach(error => {
+                error.classList.add('hidden');
+            });
+            
+            // Get form values
+            const firstName = document.getElementById('firstName').value.trim();
+            const lastName = document.getElementById('lastName').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const subject = document.getElementById('subject').value.trim();
+            const message = document.getElementById('message').value.trim();
+            
+            let isValid = true;
+            
+            // Validate form fields
+            if (!firstName) {
+                document.getElementById('firstNameError').classList.remove('hidden');
+                isValid = false;
+            }
+            
+            if (!lastName) {
+                document.getElementById('lastNameError').classList.remove('hidden');
+                isValid = false;
+            }
+            
+            if (!email || !validateEmail(email)) {
+                document.getElementById('emailError').classList.remove('hidden');
+                isValid = false;
+            }
+            
+            if (!subject) {
+                document.getElementById('subjectError').classList.remove('hidden');
+                isValid = false;
+            }
+            
+            if (!message) {
+                document.getElementById('messageError').classList.remove('hidden');
+                isValid = false;
+            }
+            
+            // If form is valid, show success message
+            if (isValid) {
+                // Show success message
+                const successMessage = document.getElementById('successMessage');
+                successMessage.classList.add('show');
+                
+                // Reset form
+                document.getElementById('contactForm').reset();
+                
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    successMessage.classList.remove('show');
+                }, 5000);
+                
+                // In a real application, you would submit the form data to a server here
+                console.log('Form submitted with data:', {
+                    firstName, lastName, email, subject, message
+                });
+            }
+        });
+        
+        // Email validation function
+        function validateEmail(email) {
+            const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(String(email).toLowerCase());
+        }
+        
+        // Add input event listeners to clear error messages when user starts typing
+        document.querySelectorAll('.form-input').forEach(input => {
+            input.addEventListener('input', function() {
+                const fieldName = this.id;
+                const errorElement = document.getElementById(`${fieldName}Error`);
+                if (errorElement) {
+                    errorElement.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

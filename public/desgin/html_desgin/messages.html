@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Inquiries Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#323751',
+                        accent: '#e76b53'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * {
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+        
+        .status-badge {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .status-interested {
+            background-color: rgba(231, 107, 83, 0.15);
+            color: #e76b53;
+        }
+        
+        .status-not-interested {
+            background-color: rgba(107, 114, 128, 0.15);
+            color: #6b7280;
+        }
+        
+        .dark .status-not-interested {
+            background-color: rgba(156, 163, 175, 0.15);
+            color: #d1d5db;
+        }
+        
+        /* Dark mode custom styles */
+        .dark .bg-gray-100 {
+            background-color: #1f2937;
+        }
+        
+        .dark .bg-white {
+            background-color: #111827;
+        }
+        
+        .dark .text-gray-800 {
+            color: #f9fafb;
+        }
+        
+        .dark .text-gray-700 {
+            color: #e5e7eb;
+        }
+        
+        .dark .text-gray-600 {
+            color: #d1d5db;
+        }
+        
+        .dark .border-gray-200 {
+            border-color: #374151;
+        }
+        
+        .dark .bg-blue-50 {
+            background-color: #1e3a8a;
+        }
+        
+        .dark .bg-green-50 {
+            background-color: #064e3b;
+        }
+        
+        .dark .bg-purple-50 {
+            background-color: #5b21b6;
+        }
+        
+        .dark .bg-yellow-50 {
+            background-color: #854d0e;
+        }
+        
+        .dark .status-interested {
+            background-color: rgba(231, 107, 83, 0.25);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 min-h-screen text-gray-800 dark:text-gray-200">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Header -->
+        <header class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
+            <div>
+                <h1 class="text-3xl font-bold text-primary dark:text-white">Property Inquiries</h1>
+                <p class="text-gray-600 dark:text-gray-400 mt-2">Manage and track property inquiries from potential clients</p>
+            </div>
+            
+            <div class="flex items-center gap-4">
+                <div class="flex items-center">
+                    <span class="mr-2 text-gray-600 dark:text-gray-400">Dark Mode</span>
+                    <button id="theme-toggle" class="w-12 h-6 rounded-full bg-gray-300 dark:bg-gray-700 relative">
+                        <div class="toggle-dot absolute w-5 h-5 rounded-full bg-accent transform transition-transform translate-x-1 dark:translate-x-7"></div>
+                    </button>
+                </div>
+                
+                <button class="bg-accent hover:bg-opacity-90 text-white font-medium py-2 px-4 rounded-lg transition-all flex items-center gap-2">
+                    <i class="fas fa-plus"></i>
+                    <span>Add Inquiry</span>
+                </button>
+            </div>
+        </header>
+        
+        <!-- Stats Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <div class="bg-white dark:bg-gray-800 rounded-xl shadow p-6 border-l-4 border-accent">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm font-medium">Total Inquiries</p>
+                        <p class="text-3xl font-bold mt-2">24</p>
+                    </div>
+                    <div class="bg-accent bg-opacity-10 p-3 rounded-lg">
+                        <i class="fas fa-inbox text-accent text-xl"></i>
+                    </div>
+                </div>
+                <div class="mt-4 text-sm text-gray-600 dark:text-gray-400">
+                    <span class="text-green-600 dark:text-green-400 font-medium">+3 this week</span>
+                </div>
+            </div>
+            
+            <div class="bg-white dark:bg-gray-800 rounded-xl shadow p-6 border-l-4 border-primary">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm font-medium">Interested</p>
+                        <p class="text-3xl font-bold mt-2">18</p>
+                    </div>
+                    <div class="bg-primary bg-opacity-10 p-3 rounded-lg">
+                        <i class="fas fa-thumbs-up text-primary text-xl"></i>
+                    </div>
+                </div>
+                <div class="mt-4 text-sm text-gray-600 dark:text-gray-400">
+                    <span class="text-accent font-medium">75% positive response</span>
+                </div>
+            </div>
+            
+            <div class="bg-white dark:bg-gray-800 rounded-xl shadow p-6 border-l-4 border-green-500">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm font-medium">Contacted</p>
+                        <p class="text-3xl font-bold mt-2">20</p>
+                    </div>
+                    <div class="bg-green-500 bg-opacity-10 p-3 rounded-lg">
+                        <i class="fas fa-phone-alt text-green-500 text-xl"></i>
+                    </div>
+                </div>
+                <div class="mt-4 text-sm text-gray-600 dark:text-gray-400">
+                    <span class="text-green-600 dark:text-green-400 font-medium">83% follow-up rate</span>
+                </div>
+            </div>
+            
+            <div class="bg-white dark:bg-gray-800 rounded-xl shadow p-6 border-l-4 border-purple-500">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm font-medium">Properties</p>
+                        <p class="text-3xl font-bold mt-2">12</p>
+                    </div>
+                    <div class="bg-purple-500 bg-opacity-10 p-3 rounded-lg">
+                        <i class="fas fa-home text-purple-500 text-xl"></i>
+                    </div>
+                </div>
+                <div class="mt-4 text-sm text-gray-600 dark:text-gray-400">
+                    <span class="text-purple-600 dark:text-purple-400 font-medium">7 unique this month</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Filters and Search -->
+        <div class="bg-white dark:bg-gray-800 rounded-xl shadow mb-8 p-6">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                <div class="flex flex-wrap gap-2">
+                    <button class="px-4 py-2 rounded-lg bg-accent text-white font-medium">All Inquiries</button>
+                    <button class="px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 font-medium">Interested</button>
+                    <button class="px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 font-medium">Not Interested</button>
+                    <button class="px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 font-medium">New</button>
+                </div>
+                
+                <div class="relative w-full md:w-auto">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <i class="fas fa-search text-gray-400"></i>
+                    </div>
+                    <input type="search" class="pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 w-full md:w-64 focus:ring-2 focus:ring-accent focus:border-accent outline-none" placeholder="Search inquiries...">
+                </div>
+            </div>
+        </div>
+        
+        <!-- Inquiries Table -->
+        <div class="bg-white dark:bg-gray-800 rounded-xl shadow overflow-hidden">
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                    <thead class="bg-gray-50 dark:bg-gray-900">
+                        <tr>
+                            <th scope="col" class="px-6 py-4 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Client</th>
+                            <th scope="col" class="px-6 py-4 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Contact</th>
+                            <th scope="col" class="px-6 py-4 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Property</th>
+                            <th scope="col" class="px-6 py-4 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Subject</th>
+                            <th scope="col" class="px-6 py-4 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Status</th>
+                            <th scope="col" class="px-6 py-4 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Date</th>
+                            <th scope="col" class="px-6 py-4 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                        <!-- Sample Data Row 1 -->
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700">
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <div class="flex-shrink-0 h-10 w-10 rounded-full bg-primary flex items-center justify-center text-white font-bold">
+                                        JD
+                                    </div>
+                                    <div class="ml-4">
+                                        <div class="text-sm font-medium">John Doe</div>
+                                        <div class="text-sm text-gray-500 dark:text-gray-400">Inquiry #001</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm">john.doe@email.com</div>
+                                <div class="text-sm text-gray-500 dark:text-gray-400">+1 (555) 123-4567</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm font-medium">Luxury Villa</div>
+                                <div class="text-sm text-gray-500 dark:text-gray-400">Property #P-12</div>
+                            </td>
+                            <td class="px-6 py-4">
+                                <div class="text-sm max-w-xs truncate">Interested in scheduling a viewing for next week</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="status-badge status-interested">
+                                    <i class="fas fa-thumbs-up mr-1"></i> Interested
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
+                                2023-10-15
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                <button class="text-accent hover:text-opacity-80 mr-3"><i class="fas fa-eye"></i></button>
+                                <button class="text-primary hover:text-opacity-80 mr-3"><i class="fas fa-edit"></i></button>
+                                <button class="text-red-500 hover:text-opacity-80"><i class="fas fa-trash-alt"></i></button>
+                            </td>
+                        </tr>
+                        
+                        <!-- Sample Data Row 2 -->
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700">
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <div class="flex-shrink-0 h-10 w-10 rounded-full bg-accent flex items-center justify-center text-white font-bold">
+                                        SJ
+                                    </div>
+                                    <div class="ml-4">
+                                        <div class="text-sm font-medium">Sarah Johnson</div>
+                                        <div class="text-sm text-gray-500 dark:text-gray-400">Inquiry #002</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm">sarah.j@email.com</div>
+                                <div class="text-sm text-gray-500 dark:text-gray-400">+1 (555) 987-6543</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm font-medium">Downtown Apartment</div>
+                                <div class="text-sm text-gray-500 dark:text-gray-400">Property #P-08</div>
+                            </td>
+                            <td class="px-6 py-4">
+                                <div class="text-sm max-w-xs truncate">Requesting more information about the property amenities</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="status-badge status-interested">
+                                    <i class="fas fa-thumbs-up mr-1"></i> Interested
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
+                                2023-10-14
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                <button class="text-accent hover:text-opacity-80 mr-3"><i class="fas fa-eye"></i></button>
+                                <button class="text-primary hover:text-opacity-80 mr-3"><i class="fas fa-edit"></i></button>
+                                <button class="text-red-500 hover:text-opacity-80"><i class="fas fa-trash-alt"></i></button>
+                            </td>
+                        </tr>
+                        
+                        <!-- Sample Data Row 3 -->
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700">
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <div class="flex-shrink-0 h-10 w-10 rounded-full bg-gray-300 dark:bg-gray-600 flex items-center justify-center text-gray-700 dark:text-gray-300 font-bold">
+                                        RB
+                                    </div>
+                                    <div class="ml-4">
+                                        <div class="text-sm font-medium">Robert Brown</div>
+                                        <div class="text-sm text-gray-500 dark:text-gray-400">Inquiry #003</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm">robert.b@email.com</div>
+                                <div class="text-sm text-gray-500 dark:text-gray-400">+1 (555) 456-7890</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm font-medium">Beach House</div>
+                                <div class="text-sm text-gray-500 dark:text-gray-400">Property #P-15</div>
+                            </td>
+                            <td class="px-6 py-4">
+                                <div class="text-sm max-w-xs truncate">Just browsing, not ready to commit yet</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="status-badge status-not-interested">
+                                    <i class="fas fa-clock mr-1"></i> Not Interested
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
+                                2023-10-12
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                <button class="text-accent hover:text-opacity-80 mr-3"><i class="fas fa-eye"></i></button>
+                                <button class="text-primary hover:text-opacity-80 mr-3"><i class="fas fa-edit"></i></button>
+                                <button class="text-red-500 hover:text-opacity-80"><i class="fas fa-trash-alt"></i></button>
+                            </td>
+                        </tr>
+                        
+                        <!-- Sample Data Row 4 -->
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700">
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <div class="flex-shrink-0 h-10 w-10 rounded-full bg-primary flex items-center justify-center text-white font-bold">
+                                        MW
+                                    </div>
+                                    <div class="ml-4">
+                                        <div class="text-sm font-medium">Maria Wilson</div>
+                                        <div class="text-sm text-gray-500 dark:text-gray-400">Inquiry #004</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm">maria.w@email.com</div>
+                                <div class="text-sm text-gray-500 dark:text-gray-400">+1 (555) 234-5678</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm font-medium">Mountain Cabin</div>
+                                <div class="text-sm text-gray-500 dark:text-gray-400">Property #P-22</div>
+                            </td>
+                            <td class="px-6 py-4">
+                                <div class="text-sm max-w-xs truncate">Interested but needs to sell current property first</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="status-badge status-interested">
+                                    <i class="fas fa-thumbs-up mr-1"></i> Interested
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
+                                2023-10-10
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                <button class="text-accent hover:text-opacity-80 mr-3"><i class="fas fa-eye"></i></button>
+                                <button class="text-primary hover:text-opacity-80 mr-3"><i class="fas fa-edit"></i></button>
+                                <button class="text-red-500 hover:text-opacity-80"><i class="fas fa-trash-alt"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Pagination -->
+            <div class="px-6 py-4 border-t border-gray-200 dark:border-gray-700 flex flex-col md:flex-row justify-between items-center">
+                <div class="text-sm text-gray-500 dark:text-gray-400 mb-4 md:mb-0">
+                    Showing <span class="font-medium">1</span> to <span class="font-medium">4</span> of <span class="font-medium">24</span> results
+                </div>
+                <div class="flex items-center space-x-2">
+                    <button class="px-3 py-1 rounded-lg border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="px-3 py-1 rounded-lg bg-accent text-white">1</button>
+                    <button class="px-3 py-1 rounded-lg border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700">2</button>
+                    <button class="px-3 py-1 rounded-lg border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700">3</button>
+                    <button class="px-3 py-1 rounded-lg border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700">4</button>
+                    <button class="px-3 py-1 rounded-lg border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700">5</button>
+                    <button class="px-3 py-1 rounded-lg border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <footer class="mt-12 text-center text-gray-500 dark:text-gray-400 text-sm">
+            <p>Property Inquiries Dashboard • Using color theme: <span class="font-medium">#323751</span> and <span class="font-medium">#e76b53</span></p>
+            <p class="mt-2">Schema fields displayed: first_name, last_name, email, phone, subject, interested_property, message, interested</p>
+        </footer>
+    </div>
+    
+    <script>
+        // Theme toggle functionality
+        document.getElementById('theme-toggle').addEventListener('click', function() {
+            const htmlElement = document.documentElement;
+            if (htmlElement.classList.contains('dark')) {
+                htmlElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                htmlElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+        
+        // Check for saved theme preference
+        if (localStorage.getItem('theme') === 'light') {
+            document.documentElement.classList.remove('dark');
+        }
+        
+        // Add sample data button functionality
+        document.querySelectorAll('.status-badge').forEach(badge => {
+            badge.addEventListener('click', function() {
+                const isInterested = this.classList.contains('status-interested');
+                if (isInterested) {
+                    this.classList.remove('status-interested');
+                    this.classList.add('status-not-interested');
+                    this.innerHTML = '<i class="fas fa-clock mr-1"></i> Not Interested';
+                } else {
+                    this.classList.remove('status-not-interested');
+                    this.classList.add('status-interested');
+                    this.innerHTML = '<i class="fas fa-thumbs-up mr-1"></i> Interested';
+                }
+            });
+        });
+        
+        // Add hover effects to table rows
+        document.querySelectorAll('tbody tr').forEach(row => {
+            row.addEventListener('click', function(e) {
+                if (!e.target.closest('button')) {
+                    this.classList.toggle('bg-gray-50');
+                    this.classList.toggle('dark:bg-gray-700');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

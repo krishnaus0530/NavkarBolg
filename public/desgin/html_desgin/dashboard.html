@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        // Initialize theme from localStorage or default to light
+        document.addEventListener('DOMContentLoaded', function() {
+            if (localStorage.getItem('dark-mode') === 'true') {
+                document.documentElement.classList.add('dark');
+                document.getElementById('darkModeToggle').checked = true;
+            }
+            
+            // Set sidebar state from localStorage
+            const sidebarState = localStorage.getItem('sidebar-collapsed');
+            if (sidebarState === 'true') {
+                document.body.classList.add('sidebar-collapsed');
+                document.getElementById('sidebarToggle').checked = true;
+            }
+        });
+        
+        function toggleDarkMode() {
+            const isDark = document.documentElement.classList.toggle('dark');
+            localStorage.setItem('dark-mode', isDark);
+        }
+        
+        function toggleSidebar() {
+            const isCollapsed = document.body.classList.toggle('sidebar-collapsed');
+            localStorage.setItem('sidebar-collapsed', isCollapsed);
+        }
+    </script>
+    <style>
+        /* Custom styles for transitions and sidebar behavior */
+        * {
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+        
+        .sidebar-collapsed #sidebar {
+            width: 70px;
+        }
+        
+        .sidebar-collapsed .sidebar-text,
+        .sidebar-collapsed .logo-text {
+            display: none;
+        }
+        
+        
+        .sidebar-collapsed .sidebar-item {
+            justify-content: center;
+            padding-left: 0;
+        }
+        
+        .sidebar-collapsed .user-info {
+            display: none;
+        }
+        
+        .sidebar-collapsed .sidebar-icon {
+            margin-right: 0;
+        }
+        
+        @media (max-width: 768px) {
+            #sidebar {
+                transform: translateX(-100%);
+                position: fixed;
+                z-index: 40;
+                height: 100vh;
+            }
+            
+            .sidebar-collapsed #sidebar {
+                transform: translateX(0);
+                width: 250px;
+            }
+            
+            .sidebar-collapsed .main-content {
+                margin-left: 0;
+            }
+            
+            .mobile-overlay {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: rgba(0, 0, 0, 0.5);
+                z-index: 30;
+            }
+            
+            .sidebar-collapsed .mobile-overlay {
+                display: block;
+            }
+        }
+        
+        /* Dark mode specific styles */
+        .dark .bg-gray-100 {
+            background-color: #1f2937;
+        }
+        
+        .dark .bg-white {
+            background-color: #111827;
+        }
+        
+        .dark .text-gray-800 {
+            color: #f9fafb;
+        }
+        
+        .dark .text-gray-700 {
+            color: #e5e7eb;
+        }
+        
+        .dark .text-gray-600 {
+            color: #d1d5db;
+        }
+        
+        .dark .border-gray-200 {
+            border-color: #374151;
+        }
+        
+        .dark .bg-blue-50 {
+            background-color: #1e3a8a;
+        }
+        
+        .dark .bg-green-50 {
+            background-color: #064e3b;
+        }
+        
+        .dark .bg-purple-50 {
+            background-color: #5b21b6;
+        }
+        
+        .dark .bg-yellow-50 {
+            background-color: #854d0e;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900">
+    <!-- Mobile overlay for sidebar -->
+    <div class="mobile-overlay" onclick="toggleSidebar()"></div>
+    
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <div id="sidebar" class="bg-white dark:bg-gray-800 text-gray-800 dark:text-white w-64 flex flex-col fixed md:relative h-full z-50 shadow-lg transition-all duration-300">
+            <!-- Logo -->
+            <div class="p-6 border-b border-gray-200 dark:border-gray-700 flex items-center">
+                <div class="bg-blue-600 w-8 h-8 rounded-md flex items-center justify-center">
+                    <i class="fas fa-chart-bar text-white"></i>
+                </div>
+                <h1 class="text-xl font-bold ml-3 logo-text">Dashboard Pro</h1>
+            </div>
+            
+            <!-- User Info -->
+            <div class="p-4 border-b border-gray-200 dark:border-gray-700 user-info">
+                <div class="flex items-center">
+                    <img src="https://ui-avatars.com/api/?name=John+Doe&background=3b82f6&color=fff" alt="User" class="w-10 h-10 rounded-full">
+                    <div class="ml-3">
+                        <h3 class="font-medium">John Doe</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">Administrator</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Navigation -->
+            <div class="flex-1 overflow-y-auto p-4">
+                <ul class="space-y-2">
+                    <li>
+                        <a href="#" class="sidebar-item flex items-center p-3 rounded-lg bg-blue-50 dark:bg-blue-900 text-blue-600 dark:text-blue-300">
+                            <i class="fas fa-tachometer-alt sidebar-icon mr-3"></i>
+                            <span class="sidebar-text font-medium">Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="sidebar-item flex items-center p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <i class="fas fa-chart-line sidebar-icon mr-3 text-gray-600 dark:text-gray-400"></i>
+                            <span class="sidebar-text font-medium">Analytics</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="sidebar-item flex items-center p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <i class="fas fa-users sidebar-icon mr-3 text-gray-600 dark:text-gray-400"></i>
+                            <span class="sidebar-text font-medium">Users</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="sidebar-item flex items-center p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <i class="fas fa-shopping-cart sidebar-icon mr-3 text-gray-600 dark:text-gray-400"></i>
+                            <span class="sidebar-text font-medium">Orders</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="sidebar-item flex items-center p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <i class="fas fa-box sidebar-icon mr-3 text-gray-600 dark:text-gray-400"></i>
+                            <span class="sidebar-text font-medium">Products</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="sidebar-item flex items-center p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <i class="fas fa-cog sidebar-icon mr-3 text-gray-600 dark:text-gray-400"></i>
+                            <span class="sidebar-text font-medium">Settings</span>
+                        </a>
+                    </li>
+                </ul>
+                
+                <!-- Section Label -->
+                <div class="mt-8 mb-2 px-3">
+                    <span class="text-xs uppercase text-gray-500 dark:text-gray-400 sidebar-text">Reports</span>
+                </div>
+                
+                <ul class="space-y-2">
+                    <li>
+                        <a href="#" class="sidebar-item flex items-center p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <i class="fas fa-file-alt sidebar-icon mr-3 text-gray-600 dark:text-gray-400"></i>
+                            <span class="sidebar-text font-medium">Monthly</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="sidebar-item flex items-center p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <i class="fas fa-file-invoice-dollar sidebar-icon mr-3 text-gray-600 dark:text-gray-400"></i>
+                            <span class="sidebar-text font-medium">Financial</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Theme Toggle in Sidebar -->
+            <div class="p-4 border-t border-gray-200 dark:border-gray-700">
+                <div class="flex items-center justify-between sidebar-item">
+                    <div class="flex items-center">
+                        <i class="fas fa-moon sidebar-icon mr-3 text-gray-600 dark:text-gray-400"></i>
+                        <span class="sidebar-text font-medium">Dark Mode</span>
+                    </div>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" id="darkModeToggle" class="sr-only" onchange="toggleDarkMode()">
+                        <div class="w-11 h-6 bg-gray-200 rounded-full peer-checked:bg-blue-600 peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all"></div>
+                    </label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content flex-1 flex flex-col overflow-hidden transition-all duration-300 md:ml-0">
+            <!-- Header -->
+            <header class="bg-white dark:bg-gray-800 shadow-sm p-4">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <!-- Mobile Menu Button -->
+                        <button class="md:hidden mr-4 text-gray-600 dark:text-gray-300" onclick="toggleSidebar()">
+                            <i class="fas fa-bars text-xl"></i>
+                        </button>
+                        
+                        <!-- Sidebar Toggle for Desktop -->
+                        <div class="hidden md:flex items-center mr-6">
+                            <span class="mr-2 text-gray-600 dark:text-gray-400">Collapse Sidebar</span>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" id="sidebarToggle" class="sr-only" onchange="toggleSidebar()">
+                                <div class="w-11 h-6 bg-gray-200 rounded-full peer-checked:bg-blue-600 peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all"></div>
+                            </label>
+                        </div>
+                        
+                        <!-- Search Bar -->
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i class="fas fa-search text-gray-400"></i>
+                            </div>
+                            <input type="text" class="bg-gray-100 dark:bg-gray-700 border-0 text-gray-800 dark:text-white pl-10 pr-4 py-2 rounded-lg w-64 focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="Search...">
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center space-x-4">
+                        <!-- Notifications -->
+                        <button class="relative p-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full">
+                            <i class="fas fa-bell"></i>
+                            <span class="absolute top-0 right-0 block h-2 w-2 rounded-full bg-red-500"></span>
+                        </button>
+                        
+                        <!-- Messages -->
+                        <button class="relative p-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full">
+                            <i class="fas fa-envelope"></i>
+                            <span class="absolute top-0 right-0 block h-2 w-2 rounded-full bg-blue-500"></span>
+                        </button>
+                        
+                        <!-- User Dropdown -->
+                        <div class="relative">
+                            <button class="flex items-center focus:outline-none">
+                                <img src="https://ui-avatars.com/api/?name=John+Doe&background=3b82f6&color=fff" alt="User" class="w-8 h-8 rounded-full">
+                                <i class="fas fa-chevron-down ml-2 text-gray-600 dark:text-gray-300"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            
+            <!-- Page Content -->
+            <main class="flex-1 overflow-y-auto p-6">
+                <!-- Page Title -->
+                <div class="mb-6">
+                    <h2 class="text-2xl font-bold text-gray-800 dark:text-white">Dashboard Overview</h2>
+                    <p class="text-gray-600 dark:text-gray-400">Welcome back! Here's what's happening with your business today.</p>
+                </div>
+                
+                <!-- Stats Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow p-6">
+                        <div class="flex items-center">
+                            <div class="bg-blue-100 dark:bg-blue-900 p-3 rounded-lg">
+                                <i class="fas fa-dollar-sign text-blue-600 dark:text-blue-400 text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-gray-500 dark:text-gray-400 text-sm">Total Revenue</h3>
+                                <p class="text-2xl font-bold text-gray-800 dark:text-white">$24,580</p>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <span class="text-green-600 text-sm font-medium">
+                                <i class="fas fa-arrow-up mr-1"></i> 12.5%
+                            </span>
+                            <span class="text-gray-500 dark:text-gray-400 text-sm ml-2">From last month</span>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow p-6">
+                        <div class="flex items-center">
+                            <div class="bg-green-100 dark:bg-green-900 p-3 rounded-lg">
+                                <i class="fas fa-users text-green-600 dark:text-green-400 text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-gray-500 dark:text-gray-400 text-sm">New Customers</h3>
+                                <p class="text-2xl font-bold text-gray-800 dark:text-white">1,248</p>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <span class="text-green-600 text-sm font-medium">
+                                <i class="fas fa-arrow-up mr-1"></i> 8.2%
+                            </span>
+                            <span class="text-gray-500 dark:text-gray-400 text-sm ml-2">From last month</span>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow p-6">
+                        <div class="flex items-center">
+                            <div class="bg-purple-100 dark:bg-purple-900 p-3 rounded-lg">
+                                <i class="fas fa-shopping-cart text-purple-600 dark:text-purple-400 text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-gray-500 dark:text-gray-400 text-sm">Total Orders</h3>
+                                <p class="text-2xl font-bold text-gray-800 dark:text-white">3,854</p>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <span class="text-red-600 text-sm font-medium">
+                                <i class="fas fa-arrow-down mr-1"></i> 2.3%
+                            </span>
+                            <span class="text-gray-500 dark:text-gray-400 text-sm ml-2">From last month</span>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow p-6">
+                        <div class="flex items-center">
+                            <div class="bg-yellow-100 dark:bg-yellow-900 p-3 rounded-lg">
+                                <i class="fas fa-chart-bar text-yellow-600 dark:text-yellow-400 text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-gray-500 dark:text-gray-400 text-sm">Conversion Rate</h3>
+                                <p class="text-2xl font-bold text-gray-800 dark:text-white">4.25%</p>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <span class="text-green-600 text-sm font-medium">
+                                <i class="fas fa-arrow-up mr-1"></i> 1.7%
+                            </span>
+                            <span class="text-gray-500 dark:text-gray-400 text-sm ml-2">From last month</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Charts and Tables Section -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <!-- Chart -->
+                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow p-6">
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="text-lg font-bold text-gray-800 dark:text-white">Revenue Overview</h3>
+                            <select class="bg-gray-100 dark:bg-gray-700 border-0 text-gray-800 dark:text-white rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                                <option>Last 7 days</option>
+                                <option>Last 30 days</option>
+                                <option>Last 90 days</option>
+                            </select>
+                        </div>
+                        <!-- Chart Placeholder -->
+                        <div class="h-64 flex items-center justify-center bg-gray-50 dark:bg-gray-900 rounded-lg">
+                            <div class="text-center">
+                                <i class="fas fa-chart-line text-4xl text-gray-400 dark:text-gray-600 mb-2"></i>
+                                <p class="text-gray-500 dark:text-gray-400">Revenue chart visualization</p>
+                                <p class="text-sm text-gray-400 dark:text-gray-600">Interactive chart would appear here</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Recent Orders -->
+                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow p-6">
+                        <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-6">Recent Orders</h3>
+                        <div class="overflow-x-auto">
+                            <table class="w-full">
+                                <thead>
+                                    <tr class="text-left text-gray-500 dark:text-gray-400 border-b dark:border-gray-700">
+                                        <th class="pb-3">Customer</th>
+                                        <th class="pb-3">Date</th>
+                                        <th class="pb-3">Amount</th>
+                                        <th class="pb-3">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b dark:border-gray-700">
+                                        <td class="py-4">
+                                            <div class="flex items-center">
+                                                <img src="https://ui-avatars.com/api/?name=Alex+Johnson&background=10b981&color=fff" alt="User" class="w-8 h-8 rounded-full mr-3">
+                                                <span class="font-medium text-gray-800 dark:text-white">Alex Johnson</span>
+                                            </div>
+                                        </td>
+                                        <td class="py-4 text-gray-600 dark:text-gray-400">May 15, 2023</td>
+                                        <td class="py-4 font-medium text-gray-800 dark:text-white">$245.99</td>
+                                        <td class="py-4">
+                                            <span class="px-3 py-1 rounded-full text-xs bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-300">Completed</span>
+                                        </td>
+                                    </tr>
+                                    <tr class="border-b dark:border-gray-700">
+                                        <td class="py-4">
+                                            <div class="flex items-center">
+                                                <img src="https://ui-avatars.com/api/?name=Maria+Garcia&background=8b5cf6&color=fff" alt="User" class="w-8 h-8 rounded-full mr-3">
+                                                <span class="font-medium text-gray-800 dark:text-white">Maria Garcia</span>
+                                            </div>
+                                        </td>
+                                        <td class="py-4 text-gray-600 dark:text-gray-400">May 14, 2023</td>
+                                        <td class="py-4 font-medium text-gray-800 dark:text-white">$128.50</td>
+                                        <td class="py-4">
+                                            <span class="px-3 py-1 rounded-full text-xs bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-300">Pending</span>
+                                        </td>
+                                    </tr>
+                                    <tr class="border-b dark:border-gray-700">
+                                        <td class="py-4">
+                                            <div class="flex items-center">
+                                                <img src="https://ui-avatars.com/api/?name=David+Smith&background=3b82f6&color=fff" alt="User" class="w-8 h-8 rounded-full mr-3">
+                                                <span class="font-medium text-gray-800 dark:text-white">David Smith</span>
+                                            </div>
+                                        </td>
+                                        <td class="py-4 text-gray-600 dark:text-gray-400">May 13, 2023</td>
+                                        <td class="py-4 font-medium text-gray-800 dark:text-white">$367.20</td>
+                                        <td class="py-4">
+                                            <span class="px-3 py-1 rounded-full text-xs bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-300">Completed</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-4">
+                                            <div class="flex items-center">
+                                                <img src="https://ui-avatars.com/api/?name=Sara+Miller&background=f59e0b&color=fff" alt="User" class="w-8 h-8 rounded-full mr-3">
+                                                <span class="font-medium text-gray-800 dark:text-white">Sara Miller</span>
+                                            </div>
+                                        </td>
+                                        <td class="py-4 text-gray-600 dark:text-gray-400">May 12, 2023</td>
+                                        <td class="py-4 font-medium text-gray-800 dark:text-white">$89.99</td>
+                                        <td class="py-4">
+                                            <span class="px-3 py-1 rounded-full text-xs bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-300">Cancelled</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Bottom Section -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
+                    <!-- Activity Feed -->
+                    <div class="lg:col-span-2 bg-white dark:bg-gray-800 rounded-xl shadow p-6">
+                        <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-6">Recent Activity</h3>
+                        <div class="space-y-6">
+                            <div class="flex">
+                                <div class="flex-shrink-0">
+                                    <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center">
+                                        <i class="fas fa-user-plus text-blue-600 dark:text-blue-400"></i>
+                                    </div>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="font-medium text-gray-800 dark:text-white">New user registered</h4>
+                                    <p class="text-gray-600 dark:text-gray-400 text-sm">John Doe joined the platform</p>
+                                    <p class="text-gray-500 dark:text-gray-500 text-xs mt-1">2 hours ago</p>
+                                </div>
+                            </div>
+                            <div class="flex">
+                                <div class="flex-shrink-0">
+                                    <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center">
+                                        <i class="fas fa-shopping-cart text-green-600 dark:text-green-400"></i>
+                                    </div>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="font-medium text-gray-800 dark:text-white">New order placed</h4>
+                                    <p class="text-gray-600 dark:text-gray-400 text-sm">Order #ORD-7892 was placed</p>
+                                    <p class="text-gray-500 dark:text-gray-500 text-xs mt-1">4 hours ago</p>
+                                </div>
+                            </div>
+                            <div class="flex">
+                                <div class="flex-shrink-0">
+                                    <div class="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-900 flex items-center justify-center">
+                                        <i class="fas fa-file-invoice-dollar text-purple-600 dark:text-purple-400"></i>
+                                    </div>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="font-medium text-gray-800 dark:text-white">Payment received</h4>
+                                    <p class="text-gray-600 dark:text-gray-400 text-sm">Payment of $245.99 received</p>
+                                    <p class="text-gray-500 dark:text-gray-500 text-xs mt-1">1 day ago</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Quick Stats -->
+                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow p-6">
+                        <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-6">Quick Stats</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-gray-600 dark:text-gray-400">Storage Usage</span>
+                                    <span class="font-medium text-gray-800 dark:text-white">65%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 65%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-gray-600 dark:text-gray-400">Bandwidth Usage</span>
+                                    <span class="font-medium text-gray-800 dark:text-white">42%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                                    <div class="bg-green-600 h-2 rounded-full" style="width: 42%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-gray-600 dark:text-gray-400">Task Completion</span>
+                                    <span class="font-medium text-gray-800 dark:text-white">78%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                                    <div class="bg-yellow-600 h-2 rounded-full" style="width: 78%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8 pt-6 border-t dark:border-gray-700">
+                            <h4 class="font-medium text-gray-800 dark:text-white mb-3">System Status</h4>
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-gray-600 dark:text-gray-400">Web Server</span>
+                                <span class="px-3 py-1 rounded-full text-xs bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-300">Online</span>
+                            </div>
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-gray-600 dark:text-gray-400">Database</span>
+                                <span class="px-3 py-1 rounded-full text-xs bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-300">Online</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-gray-600 dark:text-gray-400">API Service</span>
+                                <span class="px-3 py-1 rounded-full text-xs bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-300">Online</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            
+            <!-- Footer -->
+            <footer class="bg-white dark:bg-gray-800 border-t dark:border-gray-700 p-4">
+                <div class="flex flex-col md:flex-row items-center justify-between">
+                    <div class="text-gray-600 dark:text-gray-400 text-sm mb-4 md:mb-0">
+                        &copy; 2023 Dashboard Pro. All rights reserved.
+                    </div>
+                    <div class="flex space-x-6">
+                        <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 text-sm">Privacy Policy</a>
+                        <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 text-sm">Terms of Service</a>
+                        <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 text-sm">Help Center</a>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    
+    <script>
+        // Initialize toggle states based on current state
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set dark mode toggle state
+            const darkModeToggle = document.getElementById('darkModeToggle');
+            if (document.documentElement.classList.contains('dark')) {
+                darkModeToggle.checked = true;
+            }
+            
+            // Set sidebar toggle state
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            if (document.body.classList.contains('sidebar-collapsed')) {
+                sidebarToggle.checked = true;
+            }
+        });
+    </script>
+</body>
+</html>

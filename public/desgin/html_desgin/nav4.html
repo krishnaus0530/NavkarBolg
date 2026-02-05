@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate Hero with Dynamic Navbar</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        // Tailwind custom colors
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        darkbluegray: '#323751',
+                        coral: '#e76b53',
+                        darkbluegraylight: '#323751c2',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Smooth transition for navbar */
+        nav {
+            transition: all 0.3s ease;
+        }
+
+        body {
+            background: linear-gradient(180deg, #f8f9fa 0%, #e2e8f0 100%);
+        }
+    </style>
+</head>
+
+<body class="m-0 p-0 font-sans">
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 w-full py-4 px-6 z-50">
+        <div class="mx-auto flex justify-between items-center">
+
+            <!-- Contact Button / Logo -->
+            <div class="hidden md:block relative z-50 ">
+                <div class="bg-white rounded-full h-24 w-24 flex items-center justify-center overflow-visible">
+                    <img src="Triumph_Logo.png" alt="Logo" class="h-16 w-16 rounded-full">
+                </div>
+            </div>
+
+            <!-- Logo + Links -->
+            <div
+                class="logo_links flex items-center space-x-6 pl-4 pr-4 pt-2 pb-2 rounded-full bg-white/10 backdrop-blur-md transition-colors duration-300">
+                <!-- Logo -->
+                <!-- <a href="#home" class="flex items-center">
+                     <img src="Triumph_Logo.png" alt="Logo" class="h-16 w-16 rounded-full">
+                </a> -->
+
+                <!-- Menu Links -->
+                <div class="hidden md:flex space-x-4">
+                    <a href="#home"
+                        class="nav-link text-white px-4 py-2 rounded-lg font-semibold hover:bg-white/20 transition">Home</a>
+                    <a href="#about"
+                        class="nav-link text-white px-4 py-2 rounded-lg font-semibold hover:bg-white/20 transition">About</a>
+                    <a href="#services"
+                        class="nav-link text-white px-4 py-2 rounded-lg font-semibold hover:bg-white/20 transition">Services</a>
+                    <a href="#careers"
+                        class="nav-link text-white px-4 py-2 rounded-lg font-semibold hover:bg-white/20 transition">Careers</a>
+                    <a href="#blog"
+                        class="nav-link text-white px-4 py-2 rounded-lg font-semibold hover:bg-white/20 transition">Blog</a>
+                    <a href="#rental"
+                        class="nav-link text-white px-4 py-2 rounded-lg font-semibold hover:bg-white/20 transition">Rental</a>
+                    <a href="#contact"
+                        class="nav-link text-white px-4 py-2 rounded-lg font-semibold hover:bg-white/20 transition">
+                        Contact Us</a>
+                </div>
+            </div>
+
+            <!-- Contact Button -->
+            <!-- <div class="hidden md:block">
+                <a href="#contact"
+                    class="contact-btn px-5 py-2 bg-coral text-white font-semibold rounded-full hover:bg-red-600 transition">
+                    Contact Us
+                </a>
+            </div> -->
+        </div>
+    </nav>
+    <!-- Hero Section -->
+    <section class="relative w-full h-screen overflow-hidden text-white">
+        <video class="absolute inset-0 w-full h-full object-cover" autoplay muted loop playsinline>
+            <source src="two.mp4" type="video/mp4">
+            Your browser doesn't support the video tag.
+        </video>
+        <!-- Adjusted div positioning -->
+        <div class="absolute right-0 z-10 px-6" style="top:30%; left:2%;">
+            <h1 class="text-5xl font-bold mb-16 text-white" style="font-size:180px">Triumph</h1>
+            <p class="text-xl mb-16 text-white" style="font-size:120px">Residential </p>
+            <h1 class="text-5xl font-bold mb-14 text-white" style="font-size:100px">Services</h1>
+            <a href="#listings"
+                class="bg-darkbluegray hover:bg-opacity-90 text-white font-semibold py-3 px-6 rounded-lg transition">
+                Contact Us
+            </a>
+        </div>
+    </section>
+
+    <section class="py-10 bg-gray-100 sm:py-16 lg:py-24">
+        <div class="max-w-5xl px-4 mx-auto sm:px-6 lg:px-8">
+            <!-- <div class="max-w-2xl mx-auto text-center">
+            <h2 class="text-3xl font-bold leading-tight text-black sm:text-4xl lg:text-5xl">Numbers tell our story</h2>
+            <p class="mt-3 text-xl leading-relaxed text-gray-600 md:mt-8">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis.</p>
+        </div> -->
+
+            <div class="grid grid-cols-1 gap-8 mt-10 text-center lg:mt-24 sm:gap-x-8 md:grid-cols-3">
+                <div>
+                    <h3 class="font-bold text-7xl">
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-darkbluegraylight to-coral">
+                            2167+ </span>
+                    </h3>
+                    <p class="mt-4 text-xl font-medium text-gray-900">PROPERTIES</p>
+                    <p class="text-base mt-0.5 text-gray-500">Creating the successful path</p>
+                </div>
+
+                <div>
+                    <h3 class="font-bold text-7xl">
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-darkbluegraylight to-coral">
+                            4821+</span>
+                    </h3>
+                    <p class="mt-4 text-xl font-medium text-gray-900">RESIDENCES</p>
+                    <p class="text-base mt-0.5 text-gray-500">In last 6 years</p>
+                </div>
+
+                <div>
+                    <h3 class="font-bold text-7xl">
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-darkbluegraylight to-coral">
+                            37+ </span>
+                    </h3>
+                    <p class="mt-4 text-xl font-medium text-gray-900">BUILDINGS</p>
+                    <p class="text-base mt-0.5 text-gray-500">Working for your success</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Hero Section -->
+    <!-- <section class="relative w-full h-screen overflow-hidden flex items-center justify-center text-white"> -->
+    <!-- Background Video -->
+    <!-- <video class="absolute inset-0 w-full h-full object-cover" autoplay muted loop playsinline>
+            <source src="two.mp4" type="video/mp4">
+            Your browser doesn't support the video tag.
+        </video> -->
+
+    <!-- Overlay with slight dark tint -->
+    <!-- <div class="absolute inset-0 bg-darkbluegray/30"></div> -->
+
+    <!-- Hero Content -->
+    <!-- <div class="relative z-10  px-6 border">
+            <h1 class="text-5xl font-bold mb-4 text-white">Find Your Dream Home</h1>
+            <p class="text-xl mb-6 text-white">Explore premium properties and luxury estates near you</p>
+            <a href="#listings"
+                class="bg-darkbluegray hover:bg-opacity-90 text-white font-semibold py-3 px-6 rounded-lg transition">
+                View Listings
+            </a>
+        </div>
+    </section> -->
+
+    <!-- Content Section -->
+    <div class="p-8 max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold mb-6 text-darkbluegray">Welcome to Triumph Real Estate</h2>
+        <p class="mb-4 text-gray-700">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum molestiae sint quod, totam sed amet quasi
+            distinctio dolores aliquam voluptates officia quos eius laboriosam officiis voluptatem quam expedita
+            doloribus architecto? Velit modi odit molestias incidunt aliquid cum similique error laborum culpa illo id
+            sequi qui harum hic sunt deserunt assumenda est perferendis possimus iure, officiis aspernatur rem
+            consectetur aut.
+        </p>
+        <p class="mb-4 text-gray-700">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius repellat impedit earum sunt aperiam dolor
+            fugit illo voluptatem eos quaerat, placeat deserunt facere architecto nihil cupiditate libero amet ullam
+            possimus iusto! Doloremque officia facere hic praesentium adipisci. Ab iusto dicta explicabo.
+        </p>
+
+        <h3 class="text-2xl font-bold mt-8 mb-4 text-darkbluegray">Our Services</h3>
+        <p class="mb-4 text-gray-700">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius repellat impedit earum sunt aperiam dolor
+            fugit illo voluptatem eos quaerat, placeat deserunt facere architecto nihil cupiditate libero amet ullam
+            possimus iusto!
+        </p>
+
+        <h3 class="text-2xl font-bold mt-8 mb-4 text-darkbluegray">Property Listings</h3>
+        <p class="mb-4 text-gray-700">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius repellat impedit earum sunt aperiam dolor
+            fugit illo voluptatem eos quaerat.
+        </p>
+
+        <h3 class="text-2xl font-bold mt-8 mb-4 text-darkbluegray">Contact Us</h3>
+        <p class="mb-4 text-gray-700">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius repellat impedit earum sunt aperiam dolor
+            fugit illo voluptatem eos quaerat.
+        </p>
+        <div class="h-32"></div>
+    </div>
+
+    <!-- Content Section -->
+    <div class="p-8 max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold mb-6 text-darkbluegray">Welcome to Triumph Real Estate</h2>
+        <p class="mb-4 text-gray-700">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum molestiae sint quod, totam sed amet quasi
+            distinctio dolores aliquam voluptates officia quos eius laboriosam officiis voluptatem quam expedita
+            doloribus architecto? Velit modi odit molestias incidunt aliquid cum similique error laborum culpa illo id
+            sequi qui harum hic sunt deserunt assumenda est perferendis possimus iure, officiis aspernatur rem
+            consectetur aut.
+        </p>
+        <p class="mb-4 text-gray-700">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius repellat impedit earum sunt aperiam dolor
+            fugit illo voluptatem eos quaerat, placeat deserunt facere architecto nihil cupiditate libero amet ullam
+            possimus iusto! Doloremque officia facere hic praesentium adipisci. Ab iusto dicta explicabo.
+        </p>
+
+        <h3 class="text-2xl font-bold mt-8 mb-4 text-darkbluegray">Our Services</h3>
+        <p class="mb-4 text-gray-700">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius repellat impedit earum sunt aperiam dolor
+            fugit illo voluptatem eos quaerat, placeat deserunt facere architecto nihil cupiditate libero amet ullam
+            possimus iusto!
+        </p>
+
+        <h3 class="text-2xl font-bold mt-8 mb-4 text-darkbluegray">Property Listings</h3>
+        <p class="mb-4 text-gray-700">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius repellat impedit earum sunt aperiam dolor
+            fugit illo voluptatem eos quaerat.
+        </p>
+
+        <h3 class="text-2xl font-bold mt-8 mb-4 text-darkbluegray">Contact Us</h3>
+        <p class="mb-4 text-gray-700">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius repellat impedit earum sunt aperiam dolor
+            fugit illo voluptatem eos quaerat.
+        </p>
+        <div class="h-32"></div>
+    </div>
+    <!-- Navbar Scroll Script -->
+    <script>
+        const navbar = document.querySelector('.logo_links'); // single element
+        const hero = document.querySelector('section');
+        const navLinks = navbar.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > hero.offsetHeight - 50) {
+                // After hero section
+                navbar.classList.add('bg-white', 'shadow-md');
+                navbar.classList.remove('bg-white/10', 'backdrop-blur-md');
+
+                navLinks.forEach(link => {
+                    link.classList.remove('text-white', 'hover:bg-white/20');
+                    link.classList.add('text-darkbluegray', 'hover:bg-darkbluegraylight', 'hover:text-white');
+                });
+            } else {
+                // Over hero section
+                navbar.classList.remove('bg-white', 'shadow-md');
+                navbar.classList.add('bg-white/10', 'backdrop-blur-md');
+
+                navLinks.forEach(link => {
+                    link.classList.remove('text-darkbluegray', 'hover:bg-darkbluegraylight', 'hover:text-white');
+                    link.classList.add('text-white', 'hover:bg-white/20');
+                });
+            }
+        });
+    </script>
+
+</body>
+
+</html>

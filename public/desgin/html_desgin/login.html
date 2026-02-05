@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureAuth | Modern Login & Signup</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+        .bg-primary {
+            background-color: #323751;
+        }
+        .bg-accent {
+            background-color: #e76b53;
+        }
+        .text-accent {
+            color: #e76b53;
+        }
+        .border-accent {
+            border-color: #e76b53;
+        }
+        .btn-primary {
+            background-color: #e76b53;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #d55a42;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(231, 107, 83, 0.2);
+        }
+        .input-focus:focus {
+            border-color: #e76b53;
+            box-shadow: 0 0 0 3px rgba(231, 107, 83, 0.1);
+        }
+        .tab-active {
+            color: #e76b53;
+            border-bottom: 3px solid #e76b53;
+        }
+        .form-container {
+            box-shadow: 0 20px 40px rgba(50, 55, 81, 0.15);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        .logo-circle {
+            /* background: linear-gradient(135deg, #377740 0%, #bcbe12 100%); */
+            background: linear-gradient(135deg, #e2e4e2 0%, #fbfcee 100%);
+        }
+        .feature-icon {
+            background-color: rgba(231, 107, 83, 0.1);
+            color: #e76b53;
+        }
+        .logo-img {
+            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+            transition: transform 0.3s ease;
+        }
+        .logo-img:hover {
+            transform: scale(1.05);
+        }
+        .user-avatar {
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen flex items-center justify-center p-4">
+    <div class="max-w-6xl w-full mx-auto">
+        <div class="flex flex-col lg:flex-row form-container">
+            <!-- Left side with logo and brand info -->
+            <div class="lg:w-2/5 bg-primary p-8 lg:p-12 text-white flex flex-col justify-between relative">
+                <!-- Decorative elements -->
+                <div class="absolute top-0 left-0 w-32 h-32 bg-[#e76b53] opacity-10 rounded-full -translate-x-16 -translate-y-16"></div>
+                <div class="absolute bottom-10 right-10 w-24 h-24 bg-[#e76b53] opacity-10 rounded-full"></div>
+                
+                <div>
+                    <!-- Logo with REAL IMAGE TAG from CDN -->
+                    <div class="flex items-center space-x-4 mb-12">
+                        <div class="logo-circle w-16 h-16 rounded-xl flex items-center justify-center overflow-hidden">
+                            <!-- ACTUAL IMAGE TAG with PNG from CDN -->
+                            <img 
+                                src="Triumph_Logo.png" 
+                                alt="SecureAuth Logo" 
+                                class="w-10 h-10 logo-img"
+                            >
+                        </div>
+                        <div>
+                            <h1 class="text-2xl font-bold">SecureAuth</h1>
+                            <p class="text-sm opacity-90">Protected Access</p>
+                        </div>
+                    </div>
+                    
+                    <h2 class="text-3xl font-bold mb-6">Join Our Community</h2>
+                    <p class="mb-8 opacity-90 leading-relaxed">Experience the future of secure authentication with our cutting-edge platform designed for both security and simplicity.</p>
+                    
+                    <!-- Features list with images -->
+                    <div class="space-y-5 mb-10">
+                        <div class="flex items-center">
+                            <div class="feature-icon w-10 h-10 rounded-full flex items-center justify-center mr-4">
+                                <!-- Image from CDN -->
+                                <img src="https://cdn-icons-png.flaticon.com/512/159/159478.png" alt="Security" class="w-5 h-5">
+                            </div>
+                            <div>
+                                <h4 class="font-medium">Bank-Level Security</h4>
+                                <p class="text-sm opacity-80">Military-grade encryption for all your data</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="feature-icon w-10 h-10 rounded-full flex items-center justify-center mr-4">
+                                <!-- Image from CDN -->
+                                <img src="https://cdn-icons-png.flaticon.com/512/2087/2087744.png" alt="Fast" class="w-5 h-5">
+                            </div>
+                            <div>
+                                <h4 class="font-medium">Lightning Fast</h4>
+                                <p class="text-sm opacity-80">Instant authentication across all devices</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="feature-icon w-10 h-10 rounded-full flex items-center justify-center mr-4">
+                                <!-- Image from CDN -->
+                                <img src="https://cdn-icons-png.flaticon.com/512/1358/1358023.png" alt="Sync" class="w-5 h-5">
+                            </div>
+                            <div>
+                                <h4 class="font-medium">Seamless Sync</h4>
+                                <p class="text-sm opacity-80">Keep your data updated everywhere</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonials with user images -->
+                <div class="mt-8 pt-8 border-t border-white/20">
+                    <p class="text-sm opacity-80 mb-4">Trusted by innovative teams worldwide</p>
+                    <div class="flex items-center">
+                        <!-- User avatars with REAL IMAGES from CDN -->
+                        <div class="flex -space-x-3">
+                            <div class="w-10 h-10 rounded-full border-2 border-white overflow-hidden">
+                                <!-- Actual image from CDN -->
+                                <img 
+                                    src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" 
+                                    alt="User 1" 
+                                    class="w-full h-full user-avatar"
+                                >
+                            </div>
+                            <div class="w-10 h-10 rounded-full border-2 border-white overflow-hidden">
+                                <!-- Actual image from CDN -->
+                                <img 
+                                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" 
+                                    alt="User 2" 
+                                    class="w-full h-full user-avatar"
+                                >
+                            </div>
+                            <div class="w-10 h-10 rounded-full border-2 border-white overflow-hidden">
+                                <!-- Actual image from CDN -->
+                                <img 
+                                    src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" 
+                                    alt="User 3" 
+                                    class="w-full h-full user-avatar"
+                                >
+                            </div>
+                            <div class="w-10 h-10 rounded-full bg-[#323751] flex items-center justify-center text-xs font-bold border-2 border-white">
+                                +47
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <p class="text-xs mt-1 opacity-80">4.8/5 from 3,200+ reviews</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right side with login/signup forms -->
+            <div class="lg:w-3/5 bg-white p-8 lg:p-12">
+                <!-- Tabs for login/signup -->
+                <div class="flex border-b border-gray-200 mb-10">
+                    <button id="loginTab" class="tab-active py-3 px-6 font-semibold text-lg focus:outline-none transition-all duration-300">Login</button>
+                    <button id="signupTab" class="py-3 px-6 font-semibold text-lg text-gray-500 focus:outline-none transition-all duration-300">Sign Up</button>
+                </div>
+                
+                <!-- Login Form -->
+                <form id="loginForm" class="space-y-7">
+                    <div>
+                        <label for="loginEmail" class="block text-gray-700 font-medium mb-2">Email Address</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" alt="Email" class="w-5 h-5">
+                            </div>
+                            <input type="email" id="loginEmail" required class="w-full pl-10 p-4 border border-gray-300 rounded-xl input-focus focus:outline-none transition-all duration-300" placeholder="you@example.com">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <label for="loginPassword" class="block text-gray-700 font-medium">Password</label>
+                            <a href="#" class="text-sm font-medium text-accent hover:underline">Forgot password?</a>
+                        </div>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <img src="https://cdn-icons-png.flaticon.com/512/3064/3064155.png" alt="Password" class="w-5 h-5">
+                            </div>
+                            <input type="password" id="loginPassword" required class="w-full pl-10 p-4 border border-gray-300 rounded-xl input-focus focus:outline-none transition-all duration-300" placeholder="Enter your password">
+                            <button type="button" class="absolute inset-y-0 right-0 pr-3 flex items-center" id="toggleLoginPassword">
+                                <img src="https://cdn-icons-png.flaticon.com/512/709/709612.png" alt="Show Password" class="w-5 h-5">
+                            </button>
+                        </div>
+                        <div class="flex items-center mt-3">
+                            <input type="checkbox" id="remember" class="h-4 w-4 rounded border-gray-300 text-accent focus:ring-accent">
+                            <label for="remember" class="ml-2 text-gray-600 text-sm">Keep me signed in for 30 days</label>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="w-full btn-primary text-white font-semibold py-4 px-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent flex items-center justify-center">
+                        <!-- Login button with image -->
+                        <img src="https://cdn-icons-png.flaticon.com/512/3588/3588775.png" alt="Login" class="w-5 h-5 mr-2">
+                        Sign In to Your Account
+                    </button>
+                    
+                    <!-- <div class="relative my-8">
+                        <div class="absolute inset-0 flex items-center">
+                            <div class="w-full border-t border-gray-300"></div>
+                        </div>
+                        <div class="relative flex justify-center text-sm">
+                            <span class="px-4 bg-white text-gray-500">Or continue with</span>
+                        </div>
+                    </div> -->
+                    
+                    <!-- <div class="grid grid-cols-2 gap-4">
+                        <button type="button" class="flex items-center justify-center py-3 px-4 border border-gray-300 rounded-xl hover:bg-gray-50 transition-all duration-300">
+                            <img src="https://cdn-icons-png.flaticon.com/512/300/300221.png" alt="Google" class="w-5 h-5 mr-3">
+                            <span>Google</span>
+                        </button>
+                        <button type="button" class="flex items-center justify-center py-3 px-4 border border-gray-300 rounded-xl hover:bg-gray-50 transition-all duration-300">
+                            <img src="https://cdn-icons-png.flaticon.com/512/0/747.png" alt="Apple" class="w-5 h-5 mr-3">
+                            <span>Apple</span>
+                        </button>
+                    </div> -->
+                </form>
+                
+                <!-- Signup Form (hidden by default) -->
+                <form id="signupForm" class="space-y-7 hidden">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="firstName" class="block text-gray-700 font-medium mb-2">First Name</label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/1077/1077114.png" alt="User" class="w-5 h-5">
+                                </div>
+                                <input type="text" id="firstName" required class="w-full pl-10 p-4 border border-gray-300 rounded-xl input-focus focus:outline-none transition-all duration-300" placeholder="John">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label for="lastName" class="block text-gray-700 font-medium mb-2">Last Name</label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/1077/1077114.png" alt="User" class="w-5 h-5">
+                                </div>
+                                <input type="text" id="lastName" required class="w-full pl-10 p-4 border border-gray-300 rounded-xl input-focus focus:outline-none transition-all duration-300" placeholder="Doe">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label for="signupEmail" class="block text-gray-700 font-medium mb-2">Email Address</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" alt="Email" class="w-5 h-5">
+                            </div>
+                            <input type="email" id="signupEmail" required class="w-full pl-10 p-4 border border-gray-300 rounded-xl input-focus focus:outline-none transition-all duration-300" placeholder="you@example.com">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label for="signupPassword" class="block text-gray-700 font-medium mb-2">Password</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <img src="https://cdn-icons-png.flaticon.com/512/3064/3064155.png" alt="Password" class="w-5 h-5">
+                            </div>
+                            <input type="password" id="signupPassword" required class="w-full pl-10 p-4 border border-gray-300 rounded-xl input-focus focus:outline-none transition-all duration-300" placeholder="Create a strong password">
+                            <button type="button" class="absolute inset-y-0 right-0 pr-3 flex items-center" id="toggleSignupPassword">
+                                <img src="https://cdn-icons-png.flaticon.com/512/709/709612.png" alt="Show Password" class="w-5 h-5">
+                            </button>
+                        </div>
+                        <div class="flex items-center mt-2 space-x-4">
+                            <div class="flex items-center">
+                                <img src="https://cdn-icons-png.flaticon.com/512/190/190411.png" alt="Check" class="w-4 h-4 mr-1">
+                                <span class="text-xs text-gray-500">8+ characters</span>
+                            </div>
+                            <div class="flex items-center">
+                                <img src="https://cdn-icons-png.flaticon.com/512/190/190411.png" alt="Check" class="w-4 h-4 mr-1">
+                                <span class="text-xs text-gray-500">Letters & numbers</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label for="confirmPassword" class="block text-gray-700 font-medium mb-2">Confirm Password</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <img src="https://cdn-icons-png.flaticon.com/512/3064/3064155.png" alt="Password" class="w-5 h-5">
+                            </div>
+                            <input type="password" id="confirmPassword" required class="w-full pl-10 p-4 border border-gray-300 rounded-xl input-focus focus:outline-none transition-all duration-300" placeholder="Confirm your password">
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <input type="checkbox" id="terms" required class="h-4 w-4 mt-1 rounded border-gray-300 text-accent focus:ring-accent">
+                        <label for="terms" class="ml-2 text-gray-600 text-sm">
+                            I agree to the <a href="#" class="text-accent font-medium hover:underline">Terms of Service</a> and <a href="#" class="text-accent font-medium hover:underline">Privacy Policy</a>. I acknowledge that my data will be processed in accordance with SecureAuth's policies.
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="w-full btn-primary text-white font-semibold py-4 px-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent flex items-center justify-center">
+                        <!-- Signup button with image -->
+                        <img src="https://cdn-icons-png.flaticon.com/512/1000/1000621.png" alt="Create Account" class="w-5 h-5 mr-2">
+                        Create Account
+                    </button>
+                    
+                    <p class="text-center text-gray-600 text-sm mt-6">
+                        Already have an account? 
+                        <button type="button" id="switchToLogin" class="text-accent font-semibold hover:underline">Sign in here</button>
+                    </p>
+                </form>
+            </div>
+        </div>
+        
+    </div>
+
+    <script>
+        // Tab switching functionality
+        const loginTab = document.getElementById('loginTab');
+        const signupTab = document.getElementById('signupTab');
+        const loginForm = document.getElementById('loginForm');
+        const signupForm = document.getElementById('signupForm');
+        const switchToLogin = document.getElementById('switchToLogin');
+        
+        loginTab.addEventListener('click', () => {
+            loginTab.classList.add('tab-active');
+            loginTab.classList.remove('text-gray-500');
+            signupTab.classList.remove('tab-active');
+            signupTab.classList.add('text-gray-500');
+            
+            loginForm.classList.remove('hidden');
+            signupForm.classList.add('hidden');
+        });
+        
+        signupTab.addEventListener('click', () => {
+            signupTab.classList.add('tab-active');
+            signupTab.classList.remove('text-gray-500');
+            loginTab.classList.remove('tab-active');
+            loginTab.classList.add('text-gray-500');
+            
+            signupForm.classList.remove('hidden');
+            loginForm.classList.add('hidden');
+        });
+        
+        switchToLogin.addEventListener('click', () => {
+            loginTab.click();
+        });
+        
+        // Toggle password visibility
+        const toggleLoginPassword = document.getElementById('toggleLoginPassword');
+        const toggleSignupPassword = document.getElementById('toggleSignupPassword');
+        const loginPassword = document.getElementById('loginPassword');
+        const signupPassword = document.getElementById('signupPassword');
+        
+        toggleLoginPassword.addEventListener('click', () => {
+            const type = loginPassword.getAttribute('type') === 'password' ? 'text' : 'password';
+            loginPassword.setAttribute('type', type);
+            
+            // Change eye icon
+            const eyeImg = toggleLoginPassword.querySelector('img');
+            if (type === 'text') {
+                eyeImg.src = 'https://cdn-icons-png.flaticon.com/512/2767/2767146.png';
+            } else {
+                eyeImg.src = 'https://cdn-icons-png.flaticon.com/512/709/709612.png';
+            }
+        });
+        
+        toggleSignupPassword.addEventListener('click', () => {
+            const type = signupPassword.getAttribute('type') === 'password' ? 'text' : 'password';
+            signupPassword.setAttribute('type', type);
+            
+            // Change eye icon
+            const eyeImg = toggleSignupPassword.querySelector('img');
+            if (type === 'text') {
+                eyeImg.src = 'https://cdn-icons-png.flaticon.com/512/2767/2767146.png';
+            } else {
+                eyeImg.src = 'https://cdn-icons-png.flaticon.com/512/709/709612.png';
+            }
+        });
+        
+        // Form submission with visual feedback
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            
+            // Visual feedback
+            const submitBtn = loginForm.querySelector('button[type="submit"]');
+            const originalHTML = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<img src="https://cdn-icons-png.flaticon.com/512/1791/1791961.png" alt="Loading" class="w-5 h-5 mr-2 animate-spin"> Signing In...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                alert(`Login successful for: ${email}\n\n(In a real application, this would redirect to the dashboard.)`);
+                submitBtn.innerHTML = originalHTML;
+                submitBtn.disabled = false;
+            }, 1500);
+        });
+        
+        signupForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('signupEmail').value;
+            const firstName = document.getElementById('firstName').value;
+            
+            // Visual feedback
+            const submitBtn = signupForm.querySelector('button[type="submit"]');
+            const originalHTML = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<img src="https://cdn-icons-png.flaticon.com/512/1791/1791961.png" alt="Loading" class="w-5 h-5 mr-2 animate-spin"> Creating Account...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                alert(`Welcome ${firstName}! Your account with email ${email} has been created successfully.\n\nCheck your email for verification.`);
+                submitBtn.innerHTML = originalHTML;
+                submitBtn.disabled = false;
+                
+                // Switch to login tab after successful signup
+                loginTab.click();
+            }, 1500);
+        });
+        
+        // Add some interactive validation for password match
+        const confirmPassword = document.getElementById('confirmPassword');
+        const signupPass = document.getElementById('signupPassword');
+        
+        confirmPassword.addEventListener('input', () => {
+            if (signupPass.value && confirmPassword.value) {
+                if (signupPass.value === confirmPassword.value) {
+                    confirmPassword.classList.remove('border-red-300');
+                    confirmPassword.classList.add('border-green-400');
+                } else {
+                    confirmPassword.classList.remove('border-green-400');
+                    confirmPassword.classList.add('border-red-300');
+                }
+            }
+        });
+    </script>
+</body>
+</html>

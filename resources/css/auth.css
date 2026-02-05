@@ -1,0 +1,83 @@
+/* Global styles */
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+.bg-primary {
+    background-color: #323751;
+}
+
+.bg-accent {
+    background-color: #e76b53;
+}
+
+.text-accent {
+    color: #e76b53;
+}
+
+.border-accent {
+    border-color: #e76b53;
+}
+
+.btn-primary {
+    background-color: #e76b53;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #d55a42;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(231, 107, 83, 0.2);
+}
+
+.input-focus:focus {
+    border-color: #e76b53;
+    box-shadow: 0 0 0 3px rgba(231, 107, 83, 0.1);
+}
+
+.tab-active {
+    color: #e76b53;
+    border-bottom: 3px solid #e76b53;
+}
+
+.form-container {
+    box-shadow: 0 20px 40px rgba(50, 55, 81, 0.15);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.logo-circle {
+    background: linear-gradient(135deg, #e2e4e2 0%, #fbfcee 100%);
+}
+
+.feature-icon {
+    background-color: rgba(231, 107, 83, 0.1);
+    color: #e76b53;
+}
+
+.logo-img {
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+    transition: transform 0.3s ease;
+}
+
+.logo-img:hover {
+    transform: scale(1.05);
+}
+
+.user-avatar {
+    object-fit: cover;
+}
+
+/* Animation for spin */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.animate-spin {
+    animation: spin 1s linear infinite;
+}

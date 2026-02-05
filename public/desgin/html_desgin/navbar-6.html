@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate Services Section</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        darkbluegray: '#323751',
+                        darkbluegraylight: '#323751c2',
+                        coral: '#e76b53',
+                    },
+                    fontFamily: {
+                        poppins: ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .coral-shadow {
+            box-shadow: 0 10px 30px -10px rgba(231, 107, 83, 0.3);
+        }
+        .darkblue-shadow {
+            box-shadow: 0 10px 30px -10px rgba(50, 55, 81, 0.1);
+        }
+    </style>
+</head>
+<body class="font-poppins bg-gray-50">
+    <!-- Services/Features Section -->
+    <section class="py-16 md:py-24 px-4 md:px-8 lg:px-16">
+        <!-- Section Header -->
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="inline-block text-coral font-semibold text-sm uppercase tracking-wider mb-2">Our Services</span>
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-darkbluegray mb-4">
+                Comprehensive Real Estate Solutions
+            </h2>
+            <p class="text-darkbluegraylight text-lg">
+                We provide end-to-end real estate services to help you find, buy, sell, and manage properties with confidence.
+            </p>
+        </div>
+
+        <!-- Services Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            
+            <!-- Service Card 1 -->
+            <div class="bg-white rounded-2xl p-8 darkblue-shadow hover:coral-shadow transition-all duration-300 hover:-translate-y-2">
+                <div class="bg-coral/10 w-16 h-16 rounded-xl flex items-center justify-center mb-6">
+                    <svg class="w-8 h-8 text-coral" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-darkbluegray mb-4">Property Buying</h3>
+                <p class="text-darkbluegraylight mb-6">
+                    Find your dream home with our extensive property listings, personalized search, and expert negotiation assistance.
+                </p>
+                <a href="#" class="text-coral font-semibold flex items-center group">
+                    Learn More
+                    <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                    </svg>
+                </a>
+            </div>
+            
+            <!-- Service Card 2 -->
+            <div class="bg-white rounded-2xl p-8 darkblue-shadow hover:coral-shadow transition-all duration-300 hover:-translate-y-2">
+                <div class="bg-coral/10 w-16 h-16 rounded-xl flex items-center justify-center mb-6">
+                    <svg class="w-8 h-8 text-coral" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-darkbluegray mb-4">Property Selling</h3>
+                <p class="text-darkbluegraylight mb-6">
+                    Maximize your property value with our marketing expertise, professional staging, and strategic pricing.
+                </p>
+                <a href="#" class="text-coral font-semibold flex items-center group">
+                    Learn More
+                    <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                    </svg>
+                </a>
+            </div>
+            
+            <!-- Service Card 3 -->
+            <div class="bg-white rounded-2xl p-8 darkblue-shadow hover:coral-shadow transition-all duration-300 hover:-translate-y-2">
+                <div class="bg-coral/10 w-16 h-16 rounded-xl flex items-center justify-center mb-6">
+                    <svg class="w-8 h-8 text-coral" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-darkbluegray mb-4">Property Management</h3>
+                <p class="text-darkbluegraylight mb-6">
+                    Comprehensive property management services including tenant screening, maintenance, and rent collection.
+                </p>
+                <a href="#" class="text-coral font-semibold flex items-center group">
+                    Learn More
+                    <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                    </svg>
+                </a>
+            </div>
+            
+            <!-- Service Card 4 -->
+            <div class="bg-white rounded-2xl p-8 darkblue-shadow hover:coral-shadow transition-all duration-300 hover:-translate-y-2">
+                <div class="bg-coral/10 w-16 h-16 rounded-xl flex items-center justify-center mb-6">
+                    <svg class="w-8 h-8 text-coral" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-darkbluegray mb-4">Commercial Real Estate</h3>
+                <p class="text-darkbluegraylight mb-6">
+                    Office spaces, retail locations, and industrial properties for lease or purchase with expert consultation.
+                </p>
+                <a href="#" class="text-coral font-semibold flex items-center group">
+                    Learn More
+                    <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                    </svg>
+                </a>
+            </div>
+            
+            <!-- Service Card 5 -->
+            <div class="bg-white rounded-2xl p-8 darkblue-shadow hover:coral-shadow transition-all duration-300 hover:-translate-y-2">
+                <div class="bg-coral/10 w-16 h-16 rounded-xl flex items-center justify-center mb-6">
+                    <svg class="w-8 h-8 text-coral" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-darkbluegray mb-4">Real Estate Investment</h3>
+                <p class="text-darkbluegraylight mb-6">
+                    Strategic investment opportunities, market analysis, and portfolio management for maximum returns.
+                </p>
+                <a href="#" class="text-coral font-semibold flex items-center group">
+                    Learn More
+                    <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                    </svg>
+                </a>
+            </div>
+            
+            <!-- Service Card 6 -->
+            <div class="bg-white rounded-2xl p-8 darkblue-shadow hover:coral-shadow transition-all duration-300 hover:-translate-y-2">
+                <div class="bg-coral/10 w-16 h-16 rounded-xl flex items-center justify-center mb-6">
+                    <svg class="w-8 h-8 text-coral" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-darkbluegray mb-4">Legal & Documentation</h3>
+                <p class="text-darkbluegraylight mb-6">
+                    Complete legal support, contract preparation, title verification, and seamless documentation process.
+                </p>
+                <a href="#" class="text-coral font-semibold flex items-center group">
+                    Learn More
+                    <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        
+        <!-- CTA Section -->
+        <div class="mt-20 text-center">
+            <div class="bg-gradient-to-r from-darkbluegray to-darkbluegray/90 rounded-2xl p-8 md:p-12 max-w-4xl mx-auto">
+                <h3 class="text-2xl md:text-3xl font-bold text-white mb-4">
+                    Need Help with Your Real Estate Needs?
+                </h3>
+                <p class="text-white/80 mb-8 max-w-2xl mx-auto">
+                    Our experienced agents are ready to assist you with buying, selling, or managing properties.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#" class="bg-coral text-white font-semibold py-3 px-8 rounded-lg hover:bg-coral/90 transition-colors shadow-lg">
+                        Contact Our Team
+                    </a>
+                    <a href="#" class="bg-white text-darkbluegray font-semibold py-3 px-8 rounded-lg hover:bg-gray-100 transition-colors">
+                        View All Services
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

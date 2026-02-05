@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Triumph Nav</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind CSS CDN -->
+    <script>
+        // Tailwind custom colors must be defined before loading Tailwind
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        darkbluegray: '#323751',
+                        coral: '#e76b53',
+                        darkbluegraylight:'#323751c2',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-darkbluegray min-h-screen">
+
+   <!-- Navbar -->
+<nav class="w-full py-4 px-6 shadow-sm  z-50">
+    <div class="mx-auto flex justify-between items-center">
+
+        <!-- Logo + Links -->
+        <div class="flex items-center space-x-6  bg-white/10 backdrop-blur-md pl-8 pr-8 pt-4 pb-4 rounded-full">
+
+            <!-- Logo -->
+            <a href="#home" class="flex items-center">
+                <div class="h-12 w-12 bg-white rounded-full flex items-center justify-center">
+                    <img src="Triumph_Logo.png" alt="Logo" class="h-10 w-auto rounded-full">
+                </div>
+            </a>
+
+            <!-- Menu Links -->
+            <div class="hidden md:flex space-x-4">
+                <a href="#home" class="text-white px-4 py-2 rounded-lg font-semibold hover:bg-white/20 transition">Home</a>
+                <a href="#about" class="text-white px-4 py-2 rounded-lg font-semibold hover:bg-white/20 transition">About</a>
+                <a href="#services" class="text-white px-4 py-2 rounded-lg font-semibold hover:bg-white/20 transition">Services</a>
+                <a href="#careers" class="text-white px-4 py-2 rounded-lg font-semibold hover:bg-white/20 transition">Careers</a>
+                <a href="#blog" class="text-white px-4 py-2 rounded-lg font-semibold hover:bg-white/20 transition">Blog</a>
+                <a href="#rental" class="text-white px-4 py-2 rounded-lg font-semibold hover:bg-white/20 transition">Rental</a>
+            </div>
+
+        </div>
+
+        <!-- Contact Button -->
+        <div class="hidden md:block">
+            <a href="#contact" class="px-5 py-2 bg-coral text-white font-semibold rounded-full hover:bg-red-600 transition">
+                Contact Us
+            </a>
+        </div>
+    </div>
+</nav>
+
+
+   <!-- Navbar -->
+<nav class="w-full py-4 px-6 shadow-sm  z-50">
+    <div class="mx-auto flex justify-between items-center">
+
+        <!-- Logo + Links -->
+        <div class="flex items-center space-x-6  bg-white backdrop-blur-md pl-8 pr-8 pt-4 pb-4 rounded-full">
+
+            <!-- Logo -->
+            <a href="#home" class="flex items-center">
+                <div class="h-12 w-12 bg-white rounded-full flex items-center justify-center">
+                    <img src="Triumph_Logo.png" alt="Logo" class="h-10 w-auto rounded-full">
+                </div>
+            </a>
+
+            <!-- Menu Links -->
+            <div class=" space-x-4">
+                <a href="#home" class="text-darkbluegray  px-4 py-2 rounded-lg font-semibold hover:bg-darkbluegraylight hover:text-white transition">Home</a>
+                <a href="#about" class="text-darkbluegray px-4 py-2 rounded-lg font-semibold  hover:bg-darkbluegraylight hover:text-white  transition">About</a>
+                <a href="#services" class="text-darkbluegray px-4 py-2 rounded-lg font-semibold  hover:bg-darkbluegraylight hover:text-white  transition">Services</a>
+                <a href="#careers" class="text-darkbluegray px-4 py-2 rounded-lg font-semibold hover:bg-darkbluegraylight hover:text-white  transition">Careers</a>
+                <a href="#blog" class="text-darkbluegray px-4 py-2 rounded-lg font-semibold  hover:bg-darkbluegraylight hover:text-white  transition">Blog</a>
+                <a href="#rental" class="text-darkbluegray px-4 py-2 rounded-lg font-semibold  hover:bg-darkbluegraylight hover:text-white  transition">Rental</a>
+            </div>
+
+        </div>
+
+        <!-- Contact Button -->
+        <div class="hidden md:block">
+            <a href="#contact" class="px-5 py-2 bg-coral text-white font-semibold rounded-full hover:bg-red-600 transition">
+                Contact Us
+            </a>
+        </div>
+    </div>
+</nav>
+
+<div class="">
+
+<nav class="w-full py-4 px-6 shadow-sm   z-50">
+    <div class="mx-auto flex justify-between items-center">
+
+        <!-- Logo + Links -->
+        <div class="flex items-center space-x-6  bg-white/10 backdrop-blur-md pl-8 pr-8 pt-4 pb-4 rounded-full">
+
+            <!-- Logo -->
+            <a href="#home" class="flex items-center">
+                <div class="h-12 w-12 bg-white rounded-full flex items-center justify-center">
+                    <img src="Triumph_Logo.png" alt="Logo" class="h-10 w-auto rounded-full">
+                </div>
+            </a>
+
+            <!-- Menu Links -->
+            <div class="hidden md:flex space-x-4">
+                <a href="#home" class="bg-white text-darkbluegray px-4 py-2 rounded-lg font-semibold hover:bg-white/20 transition">Home</a>
+                <a href="#about" class="bg-white text-darkbluegray px-4 py-2 rounded-lg font-semibold hover:bg-white/20 transition">About</a>
+                <a href="#services" class="bg-white text-darkbluegray px-4 py-2 rounded-lg font-semibold hover:bg-white/20 transition">Services</a>
+                <a href="#careers" class="bg-white text-darkbluegray px-4 py-2 rounded-lg font-semibold hover:bg-white/20 transition">Careers</a>
+                <a href="#blog" class="bg-white text-darkbluegray px-4 py-2 rounded-lg font-semibold hover:bg-white/20 transition">Blog</a>
+                <a href="#rental" class="bg-white text-darkbluegray px-4 py-2 rounded-lg font-semibold hover:bg-white/20 transition">Rental</a>
+            </div>
+
+        </div>
+
+        <!-- Contact Button -->
+        <div class="hidden md:block">
+            <a href="#contact" class="px-5 py-2 bg-coral text-white font-semibold rounded-full hover:bg-red-600 transition">
+                Contact Us
+            </a>
+        </div>
+    </div>
+</nav>
+</div>
+
+
+<div class="">
+
+<nav class="w-full py-4 px-6 shadow-sm   z-50">
+    <div class="mx-auto flex justify-between items-center">
+
+        <!-- Logo + Links -->
+        <div class="flex items-center space-x-6  bg-white  pl-8 pr-8 pt-4 pb-4 rounded-full">
+
+            <!-- Logo -->
+            <a href="#home" class="flex items-center">
+                <div class="h-12 w-12 bg-white rounded-full flex items-center justify-center">
+                    <img src="Triumph_Logo.png" alt="Logo" class="h-10 w-auto rounded-full">
+                </div>
+            </a>
+
+            <!-- Menu Links -->
+            <div class="hidden md:flex space-x-4">
+                <a href="#home" class="bg-darkbluegray text-white px-4 py-2 rounded-lg font-semibold hover:bg-darkbluegraylight transition">Home</a>
+                <a href="#about" class="bg-darkbluegray text-white px-4 py-2 rounded-lg font-semibold hover:bg-darkbluegraylight transition">About</a>
+                <a href="#services" class="bg-darkbluegray text-white px-4 py-2 rounded-lg font-semibold hover:bg-darkbluegraylight transition">Services</a>
+                <a href="#careers" class="bg-darkbluegray text-white px-4 py-2 rounded-lg font-semibold hover:bg-darkbluegraylight transition">Careers</a>
+                <a href="#blog" class="bg-darkbluegray text-white px-4 py-2 rounded-lg font-semibold hover:bg-darkbluegraylight transition">Blog</a>
+                <a href="#rental" class="bg-darkbluegray text-white px-4 py-2 rounded-lg font-semibold hover:bg-darkbluegraylight transition">Rental</a>
+            </div>
+
+        </div>
+
+        <!-- Contact Button -->
+        <div class="hidden md:block">
+            <a href="#contact" class="px-5 py-2 bg-coral text-white font-semibold rounded-full hover:bg-red-600 transition">
+                Contact Us
+            </a>
+        </div>
+    </div>
+</nav>
+</div>
+
+</body>
+
+</html>
